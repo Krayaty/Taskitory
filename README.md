@@ -1,5 +1,5 @@
 # Taskitory
-Dieses Repository beinhaltet die Dokumentation und das Produkt einer Klausurersatzleistung für die Vorlesung "Advanced Software Engineering" an der DHBW Karlsruhe aus dem 3. Studienjahr (2021/22) des Studiengangs TINF19.
+Dieses Repository beinhaltet die Dokumentation und das Produkt einer Klausurersatzleistung für die Vorlesung "Advanced Software Engineering" an der DHBW Karlsruhe aus dem 3. Studienjahr (2021/22) des Studiengangs TINF19 angefertigt von Fabian Schwickert.
 
 ## Thema
 Es gibt eine Reihe von Aufgabenverwaltungs-Systemen wie z. B. bei Jira, Youtrack oder GitHub, die mit einem Kanban Board arbeiten. Das Ziel dieser Klausurersatzleistung ist, eine Applikation zu entwickeln, die eine solche Aufgabenverwaltung modelliert. Es wird jedoch keine Benutzeroberfläche entwickelt, sondern lediglich die notwendige Anwendungslogik programmiert und über eine REST-API verfügbar gemacht. Zur Umsetzung wird die Programmiersprache Java und das Framework Spring Boot verwendet.
