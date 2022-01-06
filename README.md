@@ -36,4 +36,4 @@ Wenn alle oberen Use Cases implementiert wurden, ist es möglich Statistiken üb
 + Spring Boot
 + Postman
 + GitHub: https://github.com/Krayaty/Taskitory
-+ dMöglicherweise Docker (3 Container: App, DBMS, IAM-Server)
++ Möglicherweise Docker (3 Container: App, DBMS, IAM-Server)
