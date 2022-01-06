@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PropertiesComponent">
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
+  </component>
+  <component name="RunManager">
+    <configuration name="TaskitoryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Taskitory" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="de.krayadev.taskitory.TaskitoryApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+</project>
