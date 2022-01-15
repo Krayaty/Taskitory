@@ -45,7 +45,7 @@ services:
       - POSTGRES_PASSWORD=MTC@ZGTU!jc4KM3YQeMH8!hobhieZT!4CTb23w7pjZBZeEyxFFgV9bQRU26Us9BhVvXoKG8XdJU_Fq8jhVzX_MBfKhtcyDJWT4sT # TODO durch externe Variable tauschen
       - PGDATA=/data/postgres
     volumes:
-      - ./db/postgres:/data/postgres
+      - ./docker-volumes/postgres:/data/postgres
     networks:
       - taskitory-net
     ports:
