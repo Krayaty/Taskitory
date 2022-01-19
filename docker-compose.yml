@@ -1,17 +1,20 @@
 version: "0.0.1"
 services:
-  backend:
-    container_name: taskitory-backend
-    build: .
+  db:
+    container_name: taskitory-db
+    image: postgres:14.1
+    environment:
+      - POSTGRES_DB=Taskitory
+      - POSTGRES_USER=admin # TODO durch externe Variable tauschen
+      - POSTGRES_PASSWORD=MTC@ZGTU!jc4KM3YQeMH8!hobhieZT!4CTb23w7pjZBZeEyxFFgV9bQRU26Us9BhVvXoKG8XdJU_Fq # TODO durch externe Variable tauschen
+      - PGDATA=/data/postgres
+    volumes:
+      - ./postgres-volume:/data
     networks:
       - taskitory-net
-    #volumes:
-    #  - ./target:
     ports:
-      - "80:8080"
-    #depends_on:
-    #  - db
-    #  - iam
+      - "60000:5432"
+    restart: unless-stopped
   iam:
     container_name: taskitory-iam
     image: jboss/keycloak:16.1.0
@@ -20,11 +23,13 @@ services:
     environment:
       - DB_VENDOR=postgres
       - DB_USER=admin # TODO durch externe Variable tauschen
-      - DB_PASSWORD=MTC@ZGTU!jc4KM3YQeMH8!hobhieZT!4CTb23w7pjZBZeEyxFFgV9bQRU26Us9BhVvXoKG8XdJU_Fq8jhVzX_MBfKhtcyDJWT4sT # TODO durch externe Variable tauschen
-      - DB_ADDR=postgres://db
+      - DB_PASSWORD=MTC@ZGTU!jc4KM3YQeMH8!hobhieZT!4CTb23w7pjZBZeEyxFFgV9bQRU26Us9BhVvXoKG8XdJU_Fq # TODO durch externe Variable tauschen
+      - DB_ADDR=db
       - DB_PORT=5432
       - DB_DATABASE=Taskitory
       - DB_SCHEMA=iam
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=T8vu@J_Dz93pENwWGsA3bJGAAMaRGce_qs8mmDg.*zou_L@CE3HogAqFU9ZdzprFRQGTGW87LNgsu.mNMBPm_7gjevs.3kpwaTaW  # TODO durch externe Variable tauschen
     ports:
       - "50000:4712" # txn-recovery-environment TODO Brauch man das?
       - "50001:4713" # txn-status-manager TODO Brauch man das?
@@ -36,21 +41,16 @@ services:
     depends_on:
       - db
     restart: unless-stopped
-  db:
-    container_name: taskitory-db
-    image: postgres:14.1
-    environment:
-      - POSTGRES_DB=Taskitory
-      - POSTGRES_USER=admin # TODO durch externe Variable tauschen
-      - POSTGRES_PASSWORD=MTC@ZGTU!jc4KM3YQeMH8!hobhieZT!4CTb23w7pjZBZeEyxFFgV9bQRU26Us9BhVvXoKG8XdJU_Fq8jhVzX_MBfKhtcyDJWT4sT # TODO durch externe Variable tauschen
-      - PGDATA=/data/postgres
-    volumes:
-      - ./docker-volumes/postgres:/data/postgres
+  backend:
+    container_name: taskitory-backend
+    build: .
     networks:
       - taskitory-net
     ports:
-      - "60000:5432"
-    restart: unless-stopped
+      - "80:8080"
+    depends_on:
+      - db
+      - iam
 networks:
   taskitory-net:
     driver: bridge
