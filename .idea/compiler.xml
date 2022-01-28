@@ -6,11 +6,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-      </profile>
-      <profile name="Annotation profile for Taskitory" enabled="true">
-        <sourceOutputDir name="docker-volumes/backend/target/generated-sources/annotations" />
-        <sourceTestOutputDir name="docker-volumes/backend/target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
         <module name="Taskitory" />
       </profile>
     </annotationProcessing>
