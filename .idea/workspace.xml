@@ -5,170 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51667e2c-3341-4bc7-9195-5eafca180219" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Dokumentation/DB/Taskitory_DB-Schema_23Jan2022.mwb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dokumentation/DB/Taskitory_DB-Schema_23Jan2022.mwb.bak" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16457_vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17972" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17973" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17977" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17982" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17983" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17989" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18004" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18005" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18006" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18015" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18017" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18024" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18025" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18026" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18032" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18034" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18041" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18042" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18043" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18044" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18052" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18053" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18054" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18056" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18073" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18074" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18075" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18080" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18096" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18098" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18099" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18100" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/18105" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/db_0.stat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/db_13757.stat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/db_16384.stat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/global.stat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_wal/000000010000000000000002" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/postmaster.pid" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/iamConnector/KeycloakSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/iamConnector/KeycloakWebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/iamConnector/TaskitoryKeycloakConfigResolver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Taskitory.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/13757/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/13757/pg_internal.init" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1247" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1247" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1249" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1249" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1249_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1249_fsm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1249_vm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1249_vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1259" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1259" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1259_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1259_fsm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1259_vm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1259_vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16386" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16386" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16399" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16399" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16434" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16434" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16440" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16440" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16457" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16457" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16457_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16457_fsm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16465" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16465" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16485" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16485" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16534" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16534" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16557" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16557" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16563" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16563" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16567" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16567" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16581" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16581" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16757" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16757" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16771" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16771" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16826" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16826" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17028" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17028" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17033" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17033" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17064" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17064" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17066" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17066" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17142" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17142" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17523" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17523" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17546" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17546" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17593" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17593" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17613" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17613" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17614" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17614" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17615" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17615" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17621" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17621" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17631" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17631" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17632" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17632" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17636" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17636" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17640" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17640" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17641" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17641" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17642" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17642" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17655" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17655" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17708" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17708" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17710" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17710" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17712" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17712" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17714" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17714" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17768" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17768" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17772" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17772" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17820" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17820" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17821" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17821" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17890" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17890" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17918" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17918" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17939" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17939" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2224" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2224" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2579" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2579" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2604" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2604" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2604_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2604_fsm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2606" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2606" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2606_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2606_fsm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2606_vm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2606_vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2608" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2608" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2610" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2610" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2615" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2615" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2619" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2619" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2619_vm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2619_vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2620" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2620" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2620_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2620_fsm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2620_vm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2620_vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2656" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2656" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2657" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2657" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2658" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2658" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2659" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2659" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2662" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2662" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2663" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2663" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2664" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2664" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2665" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2665" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2666" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2666" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2667" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2667" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2673" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2673" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2674" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2674" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2678" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2678" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2679" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2679" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2684" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2684" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2685" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2685" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2696" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2696" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2699" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2699" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2701" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2701" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2702" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2702" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2703" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2703" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2704" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2704" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3455" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3455" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3501" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3501" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3502" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3502" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3503" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3503" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3534" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3534" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/5002" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/5002" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/826" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/826" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/827" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/827" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/828" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/828" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/pg_internal.init" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/1214" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/1214" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/1214_vm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/1214_vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/1232" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/1232" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/1233" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/1233" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/1260" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/1260" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/1260_vm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/1260_vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/2676" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/2676" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/2677" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/2677" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/pg_control" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/pg_internal.init" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat/db_0.stat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat/db_13757.stat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat/db_16384.stat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat/global.stat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_wal/000000010000000000000001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_xact/0000" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_xact/0000" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/Controller/MainController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +64,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsDialog.application.dockerMachine" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -231,17 +73,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Docker.Full Docker-Compose">
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TaskitoryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Taskitory" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="de.krayadev.taskitory.TaskitoryApplication" />
@@ -346,7 +177,8 @@
       <workItem from="1642942665092" duration="186000" />
       <workItem from="1642950792607" duration="1451000" />
       <workItem from="1643220816808" duration="491000" />
-      <workItem from="1643389641549" duration="1567000" />
+      <workItem from="1643389641549" duration="1787000" />
+      <workItem from="1643823786159" duration="1500000" />
     </task>
     <task id="LOCAL-00001" summary="- Problem mit .idea Ordner (keine Projektordner werden angezeigt) gelöst durch Löschen und Regenerieren des .idea Ordners">
       <created>1641477172140</created>
@@ -390,7 +222,21 @@
       <option name="project" value="LOCAL" />
       <updated>1642613175744</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="- Konzeption und Konfiguration von DB und IAM">
+      <created>1643391911031</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1643391911031</updated>
+    </task>
+    <task id="LOCAL-00008" summary="- Anpassung von application.properties in BE für Connection zu IAM und DB">
+      <created>1643391976804</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1643391976804</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -415,6 +261,8 @@
     <MESSAGE value="- Oberflächliche Anpassung der Docker-Konfiguration" />
     <MESSAGE value="- Implementierung eines rudimentären REST-Controllers" />
     <MESSAGE value="- Docker-Compose weitgehend fertiggestellt&#10;- Test-Anpassungen von Keycloak und postgres" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Docker-Compose weitgehend fertiggestellt&#10;- Test-Anpassungen von Keycloak und postgres" />
+    <MESSAGE value="- Konzeption und Konfiguration von DB und IAM" />
+    <MESSAGE value="- Anpassung von application.properties in BE für Connection zu IAM und DB" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Anpassung von application.properties in BE für Connection zu IAM und DB" />
   </component>
 </project>
