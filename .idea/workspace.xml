@@ -5,12 +5,96 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51667e2c-3341-4bc7-9195-5eafca180219" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/iamConnector/KeycloakSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/iamConnector/KeycloakWebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/iamConnector/TaskitoryKeycloakConfigResolver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Taskitory.postman_collection.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/db_0.stat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/db_16384.stat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/global.stat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/postmaster.pid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/13757/pg_internal.init" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1259" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1259" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16386" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16386" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16399" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16399" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16421" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16421" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16440" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16440" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16457" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16457" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16457_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16457_fsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16457_vm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16457_vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16465" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16465" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16485" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16485" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16499" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16499" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16517" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16517" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16520" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16520" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16534" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16534" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16563" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16563" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16569" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16569" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16573" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16573" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16577" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16577" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16585" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16585" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16757" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16757" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16771" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16771" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16792" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16792" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16798" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16798" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16826" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16826" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16835" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16835" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17070" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17070" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17118" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17118" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17142" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17142" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17267" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17267" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17281" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17281" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17295" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17295" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17336" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17336" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17345" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17345" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17346" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17346" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17352" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17352" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17353" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17353" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17523" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17523" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17546" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17546" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17587" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17587" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17602" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17602" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17605" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17605" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17621" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17621" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17633" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17633" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17636" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17636" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17640" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17640" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17641" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17641" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17642" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17642" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17655" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17655" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17656" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17656" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17708" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17708" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17710" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17710" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17712" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17712" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17714" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17714" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17741" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17741" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17768" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17768" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17772" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17772" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17815" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17815" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17816" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17816" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17819" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17819" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17820" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17820" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17821" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17821" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17890" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17890" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17939" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/17939" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2619" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2619" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2619_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2619_fsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2619_vm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2619_vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2678" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2678" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2696" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2696" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/pg_control" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat/db_0.stat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat/db_13757.stat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat/db_16384.stat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat/global.stat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_wal/000000010000000000000001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_xact/0000" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_xact/0000" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/Controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/TaskitoryApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/TaskitoryApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/iamConnector/KeycloakSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/iamConnector/KeycloakSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/iamConnector/KeycloakWebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +156,82 @@
       <recent name="$PROJECT_DIR$/Datenbank" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.Full Docker-Compose">
+  <component name="RunManager" selected="Docker.BE Docker-Compose">
+    <configuration name="Taskitory [clean]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+              </list>
+            </option>
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="Taskitory [install]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="install" />
+              </list>
+            </option>
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="Taskitory [package]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="package" />
+              </list>
+            </option>
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
     <configuration name="TaskitoryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Taskitory" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="de.krayadev.taskitory.TaskitoryApplication" />
@@ -80,38 +239,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Backend Docker-Compose" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="BE Docker-Compose" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="envFilePath" value="" />
+          <option name="commandLineOptions" value="--build" />
           <option name="services">
             <list>
               <option value="backend" />
             </list>
           </option>
           <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="DB Docker-Compose" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="envFilePath" value="" />
-          <option name="services">
-            <list>
-              <option value="db" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
-      <deployment type="dockerfile">
-        <settings>
-          <option name="sourceFilePath" value="Dockerfile" />
+          <option name="upDetach" value="false" />
         </settings>
       </deployment>
       <method v="2" />
@@ -120,6 +259,7 @@
       <deployment type="docker-compose.yml">
         <settings>
           <option name="envFilePath" value="" />
+          <option name="commandLineOptions" value="--build" />
           <option name="sourceFilePath" value="docker-compose.yml" />
           <option name="upDetach" value="false" />
         </settings>
@@ -142,20 +282,21 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Docker.BE Docker-Compose" />
       <item itemvalue="Docker.Full Docker-Compose" />
-      <item itemvalue="Docker.Backend Docker-Compose" />
-      <item itemvalue="Docker.DB Docker-Compose" />
       <item itemvalue="Docker.IAM Docker-Compose" />
-      <item itemvalue="Docker.Dockerfile" />
+      <item itemvalue="Maven.Taskitory [install]" />
+      <item itemvalue="Maven.Taskitory [clean]" />
+      <item itemvalue="Maven.Taskitory [package]" />
       <item itemvalue="Spring Boot.TaskitoryApplication" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Docker.Full Docker-Compose" />
+        <item itemvalue="Maven.Taskitory [clean]" />
+        <item itemvalue="Maven.Taskitory [package]" />
+        <item itemvalue="Maven.Taskitory [install]" />
         <item itemvalue="Docker.IAM Docker-Compose" />
-        <item itemvalue="Docker.DB Docker-Compose" />
-        <item itemvalue="Docker.Dockerfile" />
-        <item itemvalue="Docker.Backend Docker-Compose" />
       </list>
     </recent_temporary>
   </component>
@@ -178,7 +319,11 @@
       <workItem from="1642950792607" duration="1451000" />
       <workItem from="1643220816808" duration="491000" />
       <workItem from="1643389641549" duration="1787000" />
-      <workItem from="1643823786159" duration="1500000" />
+      <workItem from="1643823786159" duration="1598000" />
+      <workItem from="1644166117851" duration="7787000" />
+      <workItem from="1644254514941" duration="5483000" />
+      <workItem from="1644413648341" duration="2095000" />
+      <workItem from="1645004908073" duration="3207000" />
     </task>
     <task id="LOCAL-00001" summary="- Problem mit .idea Ordner (keine Projektordner werden angezeigt) gelöst durch Löschen und Regenerieren des .idea Ordners">
       <created>1641477172140</created>
@@ -236,7 +381,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643391976804</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="- BE Anpassungen für IAM- und DB-Integration">
+      <created>1643825366819</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1643825366820</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,6 +415,7 @@
     <MESSAGE value="- Docker-Compose weitgehend fertiggestellt&#10;- Test-Anpassungen von Keycloak und postgres" />
     <MESSAGE value="- Konzeption und Konfiguration von DB und IAM" />
     <MESSAGE value="- Anpassung von application.properties in BE für Connection zu IAM und DB" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Anpassung von application.properties in BE für Connection zu IAM und DB" />
+    <MESSAGE value="- BE Anpassungen für IAM- und DB-Integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="- BE Anpassungen für IAM- und DB-Integration" />
   </component>
 </project>
