@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "3c424bfd-ea66-41ee-8068-4e9061146a05",
+		"name": "Taskitory",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{backend_server}}/test",
+					"host": [
+						"{{backend_server}}"
+					],
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"var grantType       = \"password\";",
+					"var clientId        = pm.collectionVariables.get(\"iam_client_id\");",
+					"var clientSecret    = pm.collectionVariables.get(\"iam_client_secret\");",
+					"var username        = pm.collectionVariables.get(\"username\");",
+					"var password        = pm.collectionVariables.get(\"password\");",
+					"",
+					"var url             = `http://localhost:50003/auth/realms/Taskitory-Realm/protocol/openid-connect/token`;",
+					"var data            = `grant_type=${grantType}&client_id=${clientId}&username=${username}&password=${password}&client_secret=${clientSecret}`;",
+					"",
+					"pm.sendRequest({",
+					"    url: url,",
+					"    method: 'POST',",
+					"    header: { 'Content-Type': 'application/x-www-form-urlencoded'},",
+					"    body: {",
+					"        mode: 'raw',",
+					"        raw: data",
+					"    }",
+					"},  function(err, response) {",
+					"    var response_json = response.json();",
+					"    var token = response_json.access_token;",
+					"    pm.environment.set('token', token);",
+					"    console.log(token);",
+					"});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "backend_server",
+			"value": "http://localhost/api",
+			"type": "string"
+		},
+		{
+			"key": "iam_server",
+			"value": "http://localhost:50003",
+			"type": "string"
+		},
+		{
+			"key": "iam_token_endpoint",
+			"value": "{{iam_server}}/auth/realms/Taskitory-Realm/protocol/openid-connect/token",
+			"type": "string"
+		},
+		{
+			"key": "iam_realm_id",
+			"value": "Taskitory-Realm",
+			"type": "string"
+		},
+		{
+			"key": "iam_client_id",
+			"value": "Taskitory-Client",
+			"type": "string"
+		},
+		{
+			"key": "iam_client_secret",
+			"value": "r59D2mPYFstpoCcrtmR9V1QIUjyfAy9P",
+			"type": "string"
+		},
+		{
+			"key": "username",
+			"value": "MemberA",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "ux6jgpmry8oA6nKTuDEWFTn7HR6nh2YXruw!!6UZWox_-YAnk7AEBixJQ2ufQnn2wy93cbyePq*@jE_.GEUxAFf*L8_8sb.JqNc8",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
