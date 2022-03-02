@@ -4,9 +4,9 @@ services:
     container_name: taskitory-db
     image: postgres:14.1
     environment:
-      - POSTGRES_DB=Taskitory
-      - POSTGRES_USER=admin # TODO durch externe Variable tauschen
-      - POSTGRES_PASSWORD=MTC@ZGTU!jc4KM3YQeMH8!hobhieZT!4CTb23w7pjZBZeEyxFFgV9bQRU26Us9BhVvXoKG8XdJU_Fq # TODO durch externe Variable tauschen
+      - POSTGRES_DB=${DATENBANK_NAME}
+      - POSTGRES_USER=${DATENBANK_ADMIN_USER}
+      - POSTGRES_PASSWORD=${DATENBANK_ADMIN_PW}
       - PGDATA=/data/postgres
     volumes:
       - ./postgres-volume:/data
@@ -22,22 +22,16 @@ services:
       - taskitory-net
     environment:
       - DB_VENDOR=postgres
-      - DB_USER=admin # TODO durch externe Variable tauschen
-      - DB_PASSWORD=MTC@ZGTU!jc4KM3YQeMH8!hobhieZT!4CTb23w7pjZBZeEyxFFgV9bQRU26Us9BhVvXoKG8XdJU_Fq # TODO durch externe Variable tauschen
-      - DB_ADDR=db
-      - DB_PORT=5432
-      - DB_DATABASE=Taskitory
-      - DB_SCHEMA=iam
-      - KEYCLOAK_USER=admin
-      - KEYCLOAK_PASSWORD=T8vu@J_Dz93pENwWGsA3bJGAAMaRGce_qs8mmDg.*zou_L@CE3HogAqFU9ZdzprFRQGTGW87LNgsu.mNMBPm_7gjevs.3kpwaTaW  # TODO durch externe Variable tauschen
+      - DB_USER=${DATENBANK_ADMIN_USER}
+      - DB_PASSWORD=${DATENBANK_ADMIN_PW}
+      - DB_ADDR=${DATENBANK_ADDR_ALIAS}
+      - DB_PORT=${DATENBANK_PORT}
+      - DB_DATABASE=${DATENBANK_NAME}
+      - DB_SCHEMA=${DATENBANK_IAM_SCHEMA}
+      - KEYCLOAK_USER=${IAM_ADMIN_USER}
+      - KEYCLOAK_PASSWORD=${IAM_ADMIN_PW}
     ports:
-      - "50000:4712" # txn-recovery-environment TODO Brauch man das?
-      - "50001:4713" # txn-status-manager TODO Brauch man das?
-      - "50002:8009" # ajp
-      - "50003:8080" # HTTP TODO später schließen
-      - "50004:8443" # HTTPS
-      - "50005:9990" # Admin-Konsole HTTP TODO später schließen
-      - "50006:9993" # Admin-Konsole HTTPS
+      - "50004:8443"
     depends_on:
       - db
     restart: unless-stopped
