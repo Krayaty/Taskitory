@@ -4,62 +4,62 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51667e2c-3341-4bc7-9195-5eafca180219" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/13757/pg_internal.init" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/db_13757.stat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/idClasses/AbhängigeAufgabenId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/idClasses/AufgabeHatTagsId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/idClasses/ProjektHatUserId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/AbhängigeAufgaben.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/Aufgabe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/AufgabeHatTags.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/KanbanBoard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/Projekt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/ProjektHatUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/Tag.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/types/AufgabenAbhängigekeitsTyp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/types/AufgabenStatus.java" afterDir="false" />
+    <list default="true" id="51667e2c-3341-4bc7-9195-5eafca180219" name="Changes" comment="- Heikle Daten in .env Datei extrahiert&#10;- Nur noch 8443 IAM Port offen">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Taskitory_0_0_1_SNAPSHOT.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/maven_wrapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/schema.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/repos/AbhängigeAufgabenRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/repos/AufgabenRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/repos/KanbanBoardRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/repos/ProjektHatUserRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/repos/ProjektRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/repos/TagRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/repos/UserRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/iamConnector/KeycloakConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/backend.lAZO6w.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/backend.lAZO6w.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/iam.VZYBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/iam.VZYBAA.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dokumentation/DB/Taskitory_DB-Schema_23Jan2022.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/Dokumentation/DB/Taskitory_DB-Schema_23Jan2022.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dokumentation/DB/Taskitory_DB-Schema_23Jan2022.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Dokumentation/DB/Taskitory_DB-Schema_23Jan2022.mwb.bak" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/13757/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/13757/pg_internal.init" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1247" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1247" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1249" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1249" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1249_vm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1249_vm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1259" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1259" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2604" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2604" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2608" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2608" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2610" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2610" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2656" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2656" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2657" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2657" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16386" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16386" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2658" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2658" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2659" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2659" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2662" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2662" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2663" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2663" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2673" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2673" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2674" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2674" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2703" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2703" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2704" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2704" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3455" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3455" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3501" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3501" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3502" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3502" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3503" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3503" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3534" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3534" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/pg_internal.init" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/1214" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/1214" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/1232" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/1232" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/1233" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/1233" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/1260" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/1260" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/pg_control" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/pg_internal.init" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/db_0.stat" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/db_0.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/db_13757.stat" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/db_13757.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/db_16384.stat" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/db_16384.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/global.stat" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/global.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_wal/000000010000000000000001" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_xact/0000" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_xact/0000" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/postmaster.pid" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/postmaster.pid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/Controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/idClasses/AbhängigeAufgabenId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/idClasses/AbhängigkeitsId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/idClasses/AufgabeHatTagsId.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/idClasses/ProjektHatUserId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/idClasses/ProjektMitgliedschaftsId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/AbhängigeAufgaben.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/Abhängigkeit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/Aufgabe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/Aufgabe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/AufgabeHatTags.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/KanbanBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/KanbanBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/Projekt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/Projekt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/ProjektHatUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/ProjektMitgliedschaft.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/Tag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/iamConnector/KeycloakSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/iamConnector/KeycloakSecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +69,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -81,6 +82,14 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -112,10 +121,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="jdk.selected.JAVA_MODULE" value="openjdk-17" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -123,7 +140,7 @@
       <recent name="$PROJECT_DIR$/Datenbank" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.Db Docker-Compose">
+  <component name="RunManager" selected="Docker.IAM Docker-Compose">
     <configuration name="Taskitory [clean]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -274,11 +291,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.IAM Docker-Compose" />
         <item itemvalue="Docker.Full Docker-Compose" />
         <item itemvalue="Maven.Taskitory [clean]" />
         <item itemvalue="Maven.Taskitory [package]" />
         <item itemvalue="Maven.Taskitory [install]" />
-        <item itemvalue="Docker.IAM Docker-Compose" />
       </list>
     </recent_temporary>
   </component>
@@ -307,7 +324,18 @@
       <workItem from="1644413648341" duration="2095000" />
       <workItem from="1645004908073" duration="3358000" />
       <workItem from="1645259370937" duration="4299000" />
-      <workItem from="1645355961179" duration="10945000" />
+      <workItem from="1645355961179" duration="11185000" />
+      <workItem from="1646064637133" duration="7306000" />
+      <workItem from="1646127409975" duration="44000" />
+      <workItem from="1646127480193" duration="58000" />
+      <workItem from="1646127597923" duration="111000" />
+      <workItem from="1646127733100" duration="13662000" />
+      <workItem from="1646146679990" duration="111000" />
+      <workItem from="1646146795021" duration="141000" />
+      <workItem from="1646146948002" duration="7436000" />
+      <workItem from="1646236640384" duration="1551000" />
+      <workItem from="1646239782553" duration="1613000" />
+      <workItem from="1646241410084" duration="2741000" />
     </task>
     <task id="LOCAL-00001" summary="- Problem mit .idea Ordner (keine Projektordner werden angezeigt) gelöst durch Löschen und Regenerieren des .idea Ordners">
       <created>1641477172140</created>
@@ -421,11 +449,37 @@
       <option name="project" value="LOCAL" />
       <updated>1645267465635</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="- Kleine Änderungen am Datenmodell&#10;- Integration der Datenquelle in IntelliJ&#10;- Anpassung der DB-Doku">
+      <created>1645369334320</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1645369334321</updated>
+    </task>
+    <task id="LOCAL-00018" summary="- Datenmodell in BE nachgebaut">
+      <created>1645369376679</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1645369376679</updated>
+    </task>
+    <task id="LOCAL-00019" summary="- Heikle Daten in .env Datei extrahiert&#10;- Nur noch 8443 IAM Port offen">
+      <created>1646244177001</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1646244177002</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:javax.persistence:javax.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate:hibernate-core" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -456,6 +510,13 @@
     <MESSAGE value="- finished iam-Integration" />
     <MESSAGE value="- removed unnecessary iam-integration class" />
     <MESSAGE value="- Keycloak und Postman fragen nur noch einen Token zur gleichen Zeit an" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Keycloak und Postman fragen nur noch einen Token zur gleichen Zeit an" />
+    <MESSAGE value="- Kleine Änderungen am Datenmodell&#10;- Integration der Datenquelle in IntelliJ&#10;- Anpassung der DB-Doku" />
+    <MESSAGE value="- Datenmodell in BE nachgebaut" />
+    <MESSAGE value="- Heikle Daten in .env Datei extrahiert&#10;- Nur noch 8443 IAM Port offen" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Heikle Daten in .env Datei extrahiert&#10;- Nur noch 8443 IAM Port offen" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
