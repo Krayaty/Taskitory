@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51667e2c-3341-4bc7-9195-5eafca180219" name="Changes" comment="- Heikle Daten in .env Datei extrahiert&#10;- Nur noch 8443 IAM Port offen">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Taskitory_0_0_1_SNAPSHOT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/maven_wrapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/schema.xml" afterDir="false" />
+    <list default="true" id="51667e2c-3341-4bc7-9195-5eafca180219" name="Changes" comment="- Anpassungen in Datenbank und BE für JPA-Implementation in BE">
       <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/repos/AbhängigeAufgabenRepo.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/repos/AufgabenRepo.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/repos/KanbanBoardRepo.java" afterDir="false" />
@@ -16,13 +13,6 @@
       <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/repos/TagRepo.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/dbConnector/repos/UserRepo.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/iamConnector/KeycloakConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/backend.lAZO6w.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/backend.lAZO6w.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/iam.VZYBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/iam.VZYBAA.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/13757/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/13757/pg_internal.init" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1247" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1247" afterDir="false" />
@@ -79,6 +69,11 @@
       <list>
         <option value="Krayaty &lt;fabian.schwickert@me.com&gt;" />
       </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
@@ -335,7 +330,7 @@
       <workItem from="1646146948002" duration="7436000" />
       <workItem from="1646236640384" duration="1551000" />
       <workItem from="1646239782553" duration="1613000" />
-      <workItem from="1646241410084" duration="2741000" />
+      <workItem from="1646241410084" duration="3041000" />
     </task>
     <task id="LOCAL-00001" summary="- Problem mit .idea Ordner (keine Projektordner werden angezeigt) gelöst durch Löschen und Regenerieren des .idea Ordners">
       <created>1641477172140</created>
@@ -470,7 +465,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646244177002</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="- IDE Umgebungs-Anpassungen für IntelliJ">
+      <created>1646244353545</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1646244353545</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,7 +515,9 @@
     <MESSAGE value="- Kleine Änderungen am Datenmodell&#10;- Integration der Datenquelle in IntelliJ&#10;- Anpassung der DB-Doku" />
     <MESSAGE value="- Datenmodell in BE nachgebaut" />
     <MESSAGE value="- Heikle Daten in .env Datei extrahiert&#10;- Nur noch 8443 IAM Port offen" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Heikle Daten in .env Datei extrahiert&#10;- Nur noch 8443 IAM Port offen" />
+    <MESSAGE value="- IDE Umgebungs-Anpassungen für IntelliJ" />
+    <MESSAGE value="- Anpassungen in Datenbank und BE für JPA-Implementation in BE" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Anpassungen in Datenbank und BE für JPA-Implementation in BE" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -61,12 +61,6 @@ public class KeycloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter
                 .authenticated();
     }
 
-    @Bean
-    @Primary
-    public KeycloakConfigResolver keycloakConfigResolver() {
-        return new KeycloakSpringBootConfigResolver();
-    }
-
     public static AccessToken getAccessToken(HttpServletRequest request) {
         KeycloakAuthenticationToken token = (KeycloakAuthenticationToken) request.getUserPrincipal();
         KeycloakPrincipal principal=(KeycloakPrincipal)token.getPrincipal();

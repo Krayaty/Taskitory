@@ -1,9 +1,13 @@
 package de.krayadev.taskitory.dbConnector.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
+
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Getter
 @Setter
@@ -19,7 +23,8 @@ import java.sql.Timestamp;
 public class KanbanBoard {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = SEQUENCE, generator = "kanbanboard_generator")
+    @SequenceGenerator(name = "kanbanboard_generator", sequenceName = "kanbanboard_id_seq", allocationSize = 1)
     private int id;
 
     @Column(length = 100, nullable = false)
@@ -28,10 +33,10 @@ public class KanbanBoard {
     @Column
     private String beschreibung;
 
-    @Column(length = 6)
+    @Column(name = "sprintstart", length = 6)
     private Timestamp sprintStart;
 
-    @Column(length = 6)
+    @Column(name = "sprintende", length = 6)
     private Timestamp sprintEnde;
 
     @Column(name = "progress_ebene", nullable = false)
@@ -44,6 +49,10 @@ public class KanbanBoard {
     private boolean testingEbene;
 
     @ManyToOne(targetEntity = Projekt.class, cascade = CascadeType.ALL)
-    @JoinColumn(table = "projekt", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "projekt", referencedColumnName = "id", nullable = false)
     private Projekt projekt;
+
+    @OneToMany(mappedBy = "kanbanBoard", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Aufgabe> aufgaben;
 }

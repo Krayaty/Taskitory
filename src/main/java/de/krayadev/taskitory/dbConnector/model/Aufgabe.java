@@ -1,10 +1,15 @@
 package de.krayadev.taskitory.dbConnector.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import de.krayadev.taskitory.dbConnector.types.AufgabenStatus;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
+
+import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Getter
 @Setter
@@ -20,7 +25,8 @@ import java.sql.Timestamp;
 public class Aufgabe {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=SEQUENCE, generator="aufgaben_generator")
+    @SequenceGenerator(name = "aufgaben_generator", sequenceName = "aufgabe_id_seq", allocationSize = 1)
     private int id;
 
     @Column(length = 100, nullable = false)
@@ -44,15 +50,31 @@ public class Aufgabe {
     private AufgabenStatus status;
 
     @ManyToOne(targetEntity = Projekt.class, cascade = CascadeType.ALL)
-    @JoinColumn(table = "projekt", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "projekt", referencedColumnName = "id", nullable = false)
     private Projekt projekt;
 
     @ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "zustaendig", table = "user_entity", referencedColumnName = "id")
+    @JoinColumn(name = "zustaendig", referencedColumnName = "id")
     private User zuständig;
 
     @ManyToOne(targetEntity = KanbanBoard.class, cascade = CascadeType.ALL)
-    @JoinColumn(table = "kanbanboard", referencedColumnName = "id")
-    private KanbanBoard kanbanboard;
+    @JoinColumn(name = "kanbanboard", referencedColumnName = "id")
+    private KanbanBoard kanbanBoard;
+
+    @OneToMany(mappedBy = "abhängigkeit", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Abhängigkeit> abhängigkeiten;
+
+    @OneToMany(mappedBy = "aufgabe", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Abhängigkeit> abhängigVon;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "aufgabe_hat_tags",
+            joinColumns = { @JoinColumn(name = "aufgabe") },
+            inverseJoinColumns = { @JoinColumn(name = "tag") }
+    )
+    private Set<Tag> zugewieseneTags;
 
 }

@@ -62,5 +62,5 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<ProjektHatUser> projekte;
+    private Set<ProjektMitgliedschaft> mitgliedschaften;
 }
