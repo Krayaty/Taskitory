@@ -1,4 +1,4 @@
-version: "0.0.1"
+version: '3.9'
 services:
   db:
     container_name: taskitory-db
@@ -37,7 +37,14 @@ services:
     restart: unless-stopped
   backend:
     container_name: taskitory-backend
-    build: .
+    build:
+      context: .
+      args:
+        - DATENBANK_ADDR_ALIAS=${DATENBANK_ADDR_ALIAS}
+        - DATENBANK_PORT=${DATENBANK_PORT}
+        - DATENBANK_NAME=${DATENBANK_NAME}
+        - DATENBANK_CLIENT_USER=${DATENBANK_CLIENT_USER}
+        - DATENBANK_CLIENT_PW=${DATENBANK_CLIENT_PW}
     networks:
       - taskitory-net
     ports:
@@ -47,4 +54,4 @@ services:
       - iam
 networks:
   taskitory-net:
-    driver: bridge
+
