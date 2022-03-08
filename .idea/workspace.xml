@@ -4,9 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51667e2c-3341-4bc7-9195-5eafca180219" name="Changes" comment="- Postgres-volume Backup-Ordner und erstes Backup erstellt.">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="51667e2c-3341-4bc7-9195-5eafca180219" name="Changes" comment="- Anführungszeichen in .env entfernt">
+      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/db_0.stat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/db_13757.stat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/db_16384.stat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/global.stat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postgres-volume/postgres/postmaster.pid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/backend.lAZO6w.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/backend.lAZO6w.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/iam.VZYBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/iam.VZYBAA.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/13757/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/13757/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1259" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1259" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1259_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1259_fsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1259_vm" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/1259_vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16386" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/16386" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2662" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2662" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2663" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/2663" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3455" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/3455" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/base/16384/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/1214" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/1214" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/1232" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/1232" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/1233" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/1233" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/pg_control" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat/db_0.stat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat/db_13757.stat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat/db_16384.stat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat/global.stat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_wal/000000010000000000000001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_xact/0000" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_xact/0000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +60,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="BE-JPA-Impl" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -74,7 +105,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="openjdk-17" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -87,12 +118,15 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/Datenbank" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.Db Docker-Compose">
+  <component name="RunManager" selected="Docker.BE Docker-Compose">
     <configuration name="Taskitory [clean]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -243,11 +277,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.Full Docker-Compose" />
         <item itemvalue="Maven.Taskitory [package]" />
         <item itemvalue="Maven.Taskitory [clean]" />
         <item itemvalue="Maven.Taskitory [install]" />
         <item itemvalue="Docker.IAM Docker-Compose" />
-        <item itemvalue="Docker.Full Docker-Compose" />
       </list>
     </recent_temporary>
   </component>
@@ -288,6 +322,8 @@
       <workItem from="1646236640384" duration="1551000" />
       <workItem from="1646239782553" duration="1613000" />
       <workItem from="1646241410084" duration="3041000" />
+      <workItem from="1646489148849" duration="10288000" />
+      <workItem from="1646747655266" duration="2183000" />
     </task>
     <task id="LOCAL-00001" summary="- Problem mit .idea Ordner (keine Projektordner werden angezeigt) gelöst durch Löschen und Regenerieren des .idea Ordners">
       <created>1641477172140</created>
@@ -450,7 +486,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646403548001</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="- Anführungszeichen in .env entfernt">
+      <created>1646403750824</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1646403750824</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -498,7 +541,8 @@
     <MESSAGE value="- .idea/shelf/ zu .gitignore hinzugefügt" />
     <MESSAGE value="- postgres-volume fix" />
     <MESSAGE value="- Postgres-volume Backup-Ordner und erstes Backup erstellt." />
-    <option name="LAST_COMMIT_MESSAGE" value="- Postgres-volume Backup-Ordner und erstes Backup erstellt." />
+    <MESSAGE value="- Anführungszeichen in .env entfernt" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Anführungszeichen in .env entfernt" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
