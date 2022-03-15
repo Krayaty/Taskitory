@@ -15,24 +15,6 @@ import java.util.List;
 public class MainController {
 
     @Autowired
-    private AbhängigeAufgabenRepo abhängigeAufgabenRepo;
-
-    @Autowired
-    private AufgabenRepo aufgabenRepo;
-
-    @Autowired
-    private KanbanBoardRepo kanbanBoardRepo;
-
-    @Autowired
-    private ProjektHatUserRepo projektHatUserRepo;
-
-    @Autowired
-    private ProjektRepo projektRepo;
-
-    @Autowired
-    private TagRepo tagRepo;
-
-    @Autowired
     private UserRepo userRepo;
 
     @RolesAllowed("Group-User")

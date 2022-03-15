@@ -4,16 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51667e2c-3341-4bc7-9195-5eafca180219" name="Changes" comment="- Automatische Postgres- und IDE-Änderungen während der Entwicklung">
+    <list default="true" id="51667e2c-3341-4bc7-9195-5eafca180219" name="Changes" comment="- Dokumentation hinzugefügt">
+      <change afterPath="$PROJECT_DIR$/Dokumentation/Tech-Doku/Abbildungen/Problemdomäne.pptx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dokumentation/Tech-Doku/Versionen/V1_Taskitory_Tech-Doku_15jan2022.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dokumentation/Tech-Doku/Versionen/V2_Taskitory_Tech-Doku_09Mar2022.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dokumentation/Tech-Doku/Versionen/V3_Taskitory_Tech-Doku_10Mar2022.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dokumentation/Tech-Doku/Versionen/V4_Taskitory_Tech-Doku_11Mar2022.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dokumentation/Tech-Doku/Versionen/V5_Taskitory_Tech-Doku_12Mar2022.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/backend.lAZO6w.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/backend.lAZO6w.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/iam.VZYBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/iam.VZYBAA.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/141f9862-cc5c-4140-a39f-aadc17fe0d32/storage_v2/_src_/database/Taskitory.ZqPHgg/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/global/pg_control" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/db_0.stat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/db_13757.stat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/db_16384.stat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_stat_tmp/global.stat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-volume/postgres/pg_wal/000000010000000000000001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-volume/postgres/postmaster.pid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dokumentation/Tech-Doku/V1_Taskitory_Tech-Doku_15jan2022.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/Controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/iamConnector/KeycloakSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/krayadev/taskitory/iamConnector/KeycloakSecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,7 +305,10 @@
       <workItem from="1646239782553" duration="1613000" />
       <workItem from="1646241410084" duration="3041000" />
       <workItem from="1646489148849" duration="10288000" />
-      <workItem from="1646747655266" duration="2375000" />
+      <workItem from="1646747655266" duration="2770000" />
+      <workItem from="1647265408000" duration="8874000" />
+      <workItem from="1647337321672" duration="2857000" />
+      <workItem from="1647343119637" duration="7361000" />
     </task>
     <task id="LOCAL-00001" summary="- Problem mit .idea Ordner (keine Projektordner werden angezeigt) gelöst durch Löschen und Regenerieren des .idea Ordners">
       <created>1641477172140</created>
@@ -483,7 +492,42 @@
       <option name="project" value="LOCAL" />
       <updated>1646749946825</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="- Ignorieren von IDE-Einstellungen per .gitignore">
+      <created>1646750074711</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1646750074711</updated>
+    </task>
+    <task id="LOCAL-00028" summary="- Automatische Postgres- und IDE-Änderungen während der Entwicklung">
+      <created>1646750164906</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1646750164906</updated>
+    </task>
+    <task id="LOCAL-00029" summary="- Automatische Postgres- und IDE-Änderungen während der Entwicklung">
+      <created>1646750199654</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1646750199654</updated>
+    </task>
+    <task id="LOCAL-00030" summary="- Automatische Postgres- und IDE-Änderungen während der Entwicklung">
+      <created>1646750217734</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1646750217734</updated>
+    </task>
+    <task id="LOCAL-00031" summary="- DB Schema überarbeitet und JPA-Mapper entsprechend angepasst">
+      <created>1647352368371</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1647352368371</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,8 +551,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="- Erste Version der Tech-Doku" />
-    <MESSAGE value="- Oberflächliche Anpassung der Docker-Konfiguration" />
     <MESSAGE value="- Implementierung eines rudimentären REST-Controllers" />
     <MESSAGE value="- Docker-Compose weitgehend fertiggestellt&#10;- Test-Anpassungen von Keycloak und postgres" />
     <MESSAGE value="- Konzeption und Konfiguration von DB und IAM" />
@@ -531,8 +573,10 @@
     <MESSAGE value="- Postgres-volume Backup-Ordner und erstes Backup erstellt." />
     <MESSAGE value="- Anführungszeichen in .env entfernt" />
     <MESSAGE value="- Umgesetzt, dass .env-Variablen in application.properties genutzt werden" />
+    <MESSAGE value="- Ignorieren von IDE-Einstellungen per .gitignore" />
     <MESSAGE value="- Automatische Postgres- und IDE-Änderungen während der Entwicklung" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Automatische Postgres- und IDE-Änderungen während der Entwicklung" />
+    <MESSAGE value="- DB Schema überarbeitet und JPA-Mapper entsprechend angepasst&#10;- Übersetzung ins Englische" />
+    <option name="LAST_COMMIT_MESSAGE" value="- DB Schema überarbeitet und JPA-Mapper entsprechend angepasst&#10;- Übersetzung ins Englische" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
