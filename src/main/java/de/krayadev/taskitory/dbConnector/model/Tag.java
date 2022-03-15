@@ -1,46 +1,60 @@
 package de.krayadev.taskitory.dbConnector.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 import java.util.Set;
+import java.util.UUID;
 
-import static javax.persistence.GenerationType.SEQUENCE;
-
-@Getter
-@Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 @Entity
 @Table(name = "tag",
         schema = "backend",
         uniqueConstraints = {
-            @UniqueConstraint(columnNames = {"bezeichnung", "projekt"})
+            @UniqueConstraint(columnNames = {"name", "project"})
         })
 public class Tag {
 
     @Id
-    @GeneratedValue(strategy = SEQUENCE, generator = "tag_generator")
-    @SequenceGenerator(name = "tag_generator", sequenceName = "tag_id_seq", allocationSize = 1)
-    private int id;
+    private final UUID id = UUID.randomUUID();
 
-    @Column(length = 100, nullable = false)
-    private String bezeichnung;
+    @Column(length = 50, nullable = false, updatable = false)
+    private String name;
 
-    @Column
-    private String beschreibung;
+    @Column(length = 500)
+    private String description;
 
-    @ManyToOne(targetEntity = Projekt.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "projekt", referencedColumnName = "id", nullable = false)
-    private Projekt projekt;
+    @ManyToOne(targetEntity = Project.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "project", referencedColumnName = "id", nullable = false, updatable = false)
+    private Project project;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "aufgabe_hat_tags",
+            name = "task_has_tags",
             joinColumns = { @JoinColumn(name = "tag") },
-            inverseJoinColumns = { @JoinColumn(name = "aufgabe") }
+            inverseJoinColumns = { @JoinColumn(name = "task") }
     )
-    private Set<Aufgabe> angewendetAufAufgaben;
+    private Set<Task> assignedTo;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tag vergleichsobjekt = (Tag) o;
+        return this.id == vergleichsobjekt.id;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void assignTo(Task task){
+        this.assignedTo.add(task);
+    }
+
+    public void unassignFrom(Task task){
+        this.assignedTo.remove(task);
+    }
 
 }

@@ -2,15 +2,11 @@ package de.krayadev.taskitory.dbConnector.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -56,11 +52,53 @@ public class User {
     @Column
     private int not_before;
 
-    @OneToMany(mappedBy="zuständig", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="responsibleUser", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Aufgabe> zugewieseneAufgaben;
+    private Set<Task> assignedTasks;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<ProjektMitgliedschaft> mitgliedschaften;
+    private Set<ProjectMembership> memberships;
+
+    @Override
+    public String toString(){
+        String result = "id: " + this.id + "\n" +
+                "username: " + this.username + "\n" +
+                "assignedTasks: [";
+        for (Task task: this.assignedTasks) {
+            result += "{taskId: " + task.getId() + "},\n";
+        }
+        result += "]\n" + "memberships: [";
+        for (ProjectMembership membership: this.memberships) {
+            result += "{projectId" + membership.getProjekt() + "},\n";
+        }
+        result += "]";
+
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User vergleichsobjekt = (User) o;
+        return this.id == vergleichsobjekt.id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public Set<Task> getAssignedTasks() {
+        return assignedTasks;
+    }
+
+    public Set<ProjectMembership> getMemberships() {
+        return memberships;
+    }
+
 }
