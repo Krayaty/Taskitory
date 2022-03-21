@@ -43,6 +43,9 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private TaskStatus status = TaskStatus.UNASSIGNED;
 
+    @Column(length = 2)
+    private int priority;
+
     @ManyToOne(targetEntity = Project.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "project", referencedColumnName = "id", nullable = false, updatable = false)
     private Project project;
@@ -50,6 +53,10 @@ public class Task {
     @ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "responsible_user", referencedColumnName = "id")
     private User responsibleUser;
+
+    @ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "creator", referencedColumnName = "id")
+    private User creator;
 
     @ManyToOne(targetEntity = KanbanBoard.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "kanban_board", referencedColumnName = "id")
