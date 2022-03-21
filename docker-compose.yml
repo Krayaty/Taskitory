@@ -1,12 +1,12 @@
-version: "0.0.1"
+version: '3.9'
 services:
   db:
     container_name: taskitory-db
     image: postgres:14.1
     environment:
-      - POSTGRES_DB=${DATENBANK_NAME}
-      - POSTGRES_USER=${DATENBANK_ADMIN_USER}
-      - POSTGRES_PASSWORD=${DATENBANK_ADMIN_PW}
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${DATABASE_ADMIN_USER}
+      - POSTGRES_PASSWORD=${DATABASE_ADMIN_PW}
       - PGDATA=/data/postgres
     volumes:
       - ./postgres-volume:/data
@@ -22,16 +22,16 @@ services:
       - taskitory-net
     environment:
       - DB_VENDOR=postgres
-      - DB_USER=${DATENBANK_ADMIN_USER}
-      - DB_PASSWORD=${DATENBANK_ADMIN_PW}
-      - DB_ADDR=${DATENBANK_ADDR_ALIAS}
-      - DB_PORT=${DATENBANK_PORT}
-      - DB_DATABASE=${DATENBANK_NAME}
-      - DB_SCHEMA=${DATENBANK_IAM_SCHEMA}
+      - DB_USER=${DATABASE_ADMIN_USER}
+      - DB_PASSWORD=${DATABASE_ADMIN_PW}
+      - DB_ADDR=${DATABASE_ADDR_ALIAS}
+      - DB_PORT=${DATABASE_PORT}
+      - DB_DATABASE=${DATABASE_NAME}
+      - DB_SCHEMA=${DATABASE_IAM_SCHEMA}
       - KEYCLOAK_USER=${IAM_ADMIN_USER}
       - KEYCLOAK_PASSWORD=${IAM_ADMIN_PW}
     ports:
-      - "50004:8443"
+      - "50000:8080"
     depends_on:
       - db
     restart: unless-stopped
@@ -40,6 +40,7 @@ services:
     build: .
     networks:
       - taskitory-net
+    env_file: .env
     ports:
       - "80:8080"
     depends_on:
@@ -47,4 +48,4 @@ services:
       - iam
 networks:
   taskitory-net:
-    driver: bridge
+

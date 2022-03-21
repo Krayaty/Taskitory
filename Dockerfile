@@ -4,7 +4,7 @@
 FROM maven:3.8.4-openjdk-17-slim AS build
 COPY src /Taskitory/src
 COPY pom.xml /Taskitory
-RUN mvn -f /Taskitory/pom.xml clean package
+RUN mvn -f /Taskitory/pom.xml -DskipTests=true clean package
 
 #
 # Package stage
