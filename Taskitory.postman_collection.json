@@ -101,17 +101,17 @@
 		},
 		{
 			"key": "iam_server",
-			"value": "http://localhost:50003",
+			"value": "http://localhost:50000",
 			"type": "string"
 		},
 		{
 			"key": "iam_token_endpoint",
-			"value": "http://localhost:50003/auth/realms/Taskitory-Realm/protocol/openid-connect/token",
+			"value": "http://localhost:50000/auth/realms/Taskitory-Realm/protocol/openid-connect/token",
 			"type": "string"
 		},
 		{
 			"key": "iam_userinfo_endpoint",
-			"value": "http://localhost:50003/auth/realms/Taskitory-Realm/protocol/openid-connect/userinfo",
+			"value": "http://localhost:50000/auth/realms/Taskitory-Realm/protocol/openid-connect/userinfo",
 			"type": "string"
 		},
 		{
@@ -141,7 +141,7 @@
 		},
 		{
 			"key": "access_token",
-			"value": "",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIwMXlfWW93Y2F4WmI5UDhKcUNDamtaMEtGNG5DdkRJNmsyOGZGaHByWmE0In0.eyJleHAiOjE2NDc4Njg2NjIsImlhdCI6MTY0Nzg2ODM2MiwianRpIjoiYTA3OWVlOGItM2Y5MC00MDY2LThiNTEtMDRkZjA5ODAwOTliIiwiaXNzIjoiaHR0cDovL2lhbTo4MDgwL2F1dGgvcmVhbG1zL1Rhc2tpdG9yeS1SZWFsbSIsImF1ZCI6WyJUYXNraXRvcnktQ2xpZW50IiwiYWNjb3VudCJdLCJzdWIiOiJhMDliYTZkNi1kOGY3LTQxYzctOWZmMS1kZmQzNTI5MzYzNjQiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJUYXNraXRvcnktQ2xpZW50Iiwic2Vzc2lvbl9zdGF0ZSI6IjU2YjFkNDRmLTgzZmQtNDc0YS1hODEyLWM4ZTEwZWJkMTIwMCIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy10YXNraXRvcnktcmVhbG0iLCJUYXNraXRvcnktVXNlciIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJUYXNraXRvcnktQ2xpZW50Ijp7InJvbGVzIjpbIkdyb3VwLU1lbWJlciJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJnb29kLXNlcnZpY2UiLCJzaWQiOiI1NmIxZDQ0Zi04M2ZkLTQ3NGEtYTgxMi1jOGUxMGViZDEyMDAifQ.G42V8lbnmKKxpxXNRZG2ffafPveZxpQGcvvMusT-UZJ_ATawMeGLBPA5AUsj_Sz7ejBHFEUstclB9N-wTomgNi1wmYuB_-NxXs4Fwl1FRvwYMIRvyH0a9XVigpD8XjImWhAMDXz_suE8ukHDvA4dPVManqUwhQfnAr2DiHQ30Npog7xW5np1x3L_U1T2pKKOFxSpFA9OgzyYiDRhwSfxABgAQPA24foPEqnxLmCNBQjfxefHZyMRJl7MYL8jRuapDiBDHUE8Ad7YEesamJzEikqTxIz1nK3TOLFdifVdcox0lTMeX5CWa1BryCtvCyoEgvJFXrRYcfxU6UshGo2UpQ",
 			"type": "string"
 		}
 	]
