@@ -2,32 +2,31 @@
 Dieses Repository beinhaltet die Dokumentation und das Produkt einer Klausurersatzleistung für die Vorlesung "Advanced Software Engineering" an der DHBW Karlsruhe aus dem 3. Studienjahr (2021/22) des Studiengangs TINF19 angefertigt von Fabian Schwickert.
 
 ## Thema
-Es gibt eine Reihe von Aufgabenverwaltungs-Systemen wie z. B. bei Jira, Youtrack oder GitHub, die mit einem Kanban Board arbeiten. Das Ziel dieser Klausurersatzleistung ist, eine Applikation zu entwickeln, die eine solche Aufgabenverwaltung modelliert. Es wird jedoch keine Benutzeroberfläche entwickelt, sondern lediglich die notwendige Anwendungslogik programmiert und über eine REST-API verfügbar gemacht. Zur Umsetzung wird die Programmiersprache Java und das Framework Spring Boot verwendet.
-Mit der Anwendung soll es möglich sein, die Aufgaben in einem Projekt gemeinsam mit dem Projekt-Team zu managen. Dazu müssen Benutzer Accounts anlegen, die in den Kontext gemeinsamer Projekte gebracht werden. Das IAM soll dabei zuerst vernachlässigt werden. Später kann durch Einsatz eines IAM-Servers wie z. B. Keycloak ein professionelles IAM eingefügt werden.
-Die Projekte dienen als Haupt-Bezugspunkt für die anderen Entitäten. Kanban Boards, Aufgaben und Statistiken sind zentral einem Projekt zugeordnet. Solche Zusammenhänge und auch die Speicherung von Daten kann zuerst durch JSON-Dateien repräsentiert werden. Später muss diese Form der Datenmodellierung und -speicherung jedoch durch eine Datenbank ersetzt werden.
-Für die Aufgabenverwaltung sind die Aufgaben/Tasks das zentrale Element. Diese Tasks sollen mindestens die Attribute „Bezeichnung“, „Beschreibung“, „Start- und Endzeitpunkt“, „Komplexität“ sowie „Abhängigkeiten“ und „zuständige Person“ besitzen.
-Diese Aufgaben sollen automatisch in der Aufgabensammlung eines Projekts landen, von wo sie einem Kanban Board hinzugefügt werden können. Ein Kanban Board kann allgemein aus einer unterschiedlichen Anzahl Spalten bestehen, die den Status einer Aufgabe beschreiben. Für diese Anwendung wird zunächst eine feste Anzahl und Art der Status angenommen: „ToDo“, „In Progress“, „Review“, „Testing“ und „Done“. Ein Kanban Board soll einen bestimmten Zeitraum (Sprint) betreffen. Ein Kanban Board verfällt nach dem Ende dieses Zeitraums. Es soll möglich sein, ein neues Kanban Board aus dem alten zu erzeugen.
-Tasks sollen einem Kanban Board hinzugefügt und im Zuge auf dem Kanban Board verschoben werden können. Über ein Kanban Board können Statistiken angelegt werden, wie z. B. wie hoch der Anteil der Aufgaben in einem bestimmten Status ist.
- 
+Es gibt eine Reihe von Aufgabenverwaltungs-Systemen wie z. B. Jira, Youtrack oder Mi-crosoft Planner, die mit einem Kanban Board arbeiten. Die hier dokumentierte Klau-surersatzleistung besteht in der Entwicklung einer Applikation, die eine solche Aufga-benverwaltung modelliert. Es wird keine graphische Benutzeroberfläche (GUI) entwickelt und lediglich die notwendige Anwendungslogik programmiert und über einen REST-Service (Representational State Transfer) verfügbar gemacht. Für die Implementierung des Rest-Services wird die Programmiersprache Java mit dem Package Manager „Maven“ und dem „Spring-Boot-Framework“ verwendet.
+Mit der Anwendung soll es möglich sein, die Aufgaben in einem Projekt gemeinsam in einem Projekt-Team zu verwalten. Dazu müssen Benutzer Accounts anlegen, die in den Kontext gemeinsamer Projekte gebracht werden. Das Identity- und Accessmanagement (IAM) soll dabei durch einen Keycloak umgesetzt werden. Eine persistente Datenspei-cherung wird mit einer Postgresql-Datenbank (DB) umgesetzt. In der DB werden die Daten des Keycloaks und ein eigenes DB-Modell gehalten. Die benannten Komponenten (Keycloak, DB und REST-Service) der Applikation sollen dockerisiert werden und mit „Docker-Compose“ konfiguriert und betrieben werden.
+Um die Bedienung des REST-Services zu vereinfachen, wird eine Sammlung von Anfragen und Konfigurationen für einen HTTP-Client zur Verfügung gestellt. Dazu wird eine „Collection“ für Anwendung Postman zur Verfügung gestellt.
+
 ## Use Cases
-1.	User anlegen
-Benutzer müssen einen Account für die Applikation besitzen und einem Projekt zugeordnet sein, um die zugehörigen Informationen einsehen zu können. Ein Benutzer-Account soll durch einen Username identifizierbar sein und mit einem Passwort authentifiziert werden. Weitere Userdaten sind für diese Applikation nicht relevant. Damit ein Benutzer über die REST-API auf die Applikation zugreifen kann, werden zunächst Username und Passwort in einer HTTP-Nachricht übermittelt. Später kann mit einem IAM-Server ein Access-Token erzeugt werden.
-2.	Projekt anlegen
-Ein Projekt ist der gemeinsame Kontext für alle anderen Entitäten. Ein Projekt hat daher auch Informationen über alle beteiligten Objekte dieser Entitäten. Neben allgemeinen Attributen wie z. B. einer Bezeichnung kennt das Projekt sein Projekt-Team, seine Aufgaben, seine Kanban Boards und seine Statistiken. Ein Projekt wird von einem Benutzer mit Bezeichnung und Projekt-Team angelegt und enthält automatisch eine leere Aufgabensammlung.
-3.	Kanban Board anlegen
-Für die Verwaltung von Aufgaben, werden bei dieser Applikation Kanban Boards eingesetzt. Kanban Boards müssen in einem bestehenden Projekt angelegt werden und für einen bestimmten Zeitraum erzeugt werden. Ein Kanban Board ist bei Erzeugung leer und besitzt die oben benannten Spalten. Es sollen mehrere Kanban Boards gleichzeitig bestehen können. Daher muss ein Kanban Board über eine Bezeichnung o. Ä. eindeutig identifizierbar sein.
-4.	Kanban Board migrieren
-Aus einem „abgelaufenen“ Kanban Board soll ein neues Kanban Board erzeugt werden. Das ist dann interessant, wenn sich auf dem alten Kanban Board noch nicht abgeschlossene Aufgaben befinden. Diese Aufgaben sollen in den gleichen Status des neuen Kanban Boards übernommen werden.
-5.	Aufgaben anlegen
-Aufgaben sind das Herzstück dieser Applikation. Eine Aufgabe soll die oben genannten Attribute enthalten und im Standardfall in die Aufgabensammlung eines Projekts eingefügt werden. Es soll aber möglich sein, die Aufgabe direkt einem bestimmten Kanban Board hinzuzufügen.
-6.	Aufgaben zu einem Kanban Board hinzufügen
-Es soll möglich sein, eine Aufgabe nachträglich aus der Aufgabensammlung zu einem Kanban Board hinzuzufügen.
-7.	Aufgabe auf dem Kanban Board verschieben
-Die zentrale Funktion eines Kanban Boards ist, Aufgaben über ihren Bearbeitungs-Status zu verwalten. Diese Funktion soll auch mit der Applikation möglich sein. Die Aufgaben auf einem Kanban Board sollen ihren Status auf Anweisung eines Benutzers ändern.
-8.	Aufgaben bearbeiten
-Es soll möglich sein, alle Attribute einer Aufgabe zu bearbeiten.
-9.	Statistik erstellen
-Wenn alle oberen Use Cases implementiert wurden, ist es möglich Statistiken über ein Kanban Board zu erstellen. Mögliche Anwendungsfälle sind z. B. Verteilung von Aufgaben nach Status oder durchschnittliche Bearbeitungsdauer.
+Die Anforderungen an die Applikation, die im Rahmen dieser Klausurersatzleistung entwickelt wird, sind weniger umfangreich als bei Referenz-Applikationen wie z. B. Youtrack oder Jira. Allerdings orientiert sich die die eigene Applikation an solchen Referenz-Applikationen. Nachfolgend werden allgemeine funktionale Anforderungen definiert und zentrale Use-Cases festgehalten, die implementiert werden sollen. Nicht-Funktionale Anforderungen werden nur dann betrachtet, wenn entsprechende Probleme auftreten.
+
+**Projekte und Benutzer**
+
+Die Projekt-Entitäten sind der Haupt-Bezugspunkt für die anderen Entitäten. Benutzer sind einem oder mehreren Projekten zugeordnet und können über eine Projekt-Entität auf die Ressourcen eines Projekts („Kanban Boards“, „Aufgaben“ und „Tags“) zugreifen. Dabei können User die Rollen eines einfachen „Users“ oder eines Projekt-Administrators („Admin“) innehaben. Es muss zu jeder Zeit mindestens einen Projekt-Administrator geben. Es gibt keine Obergrenze für die Anzahl von Projekt-Administratoren. Die Rollen beschränken den Zugriff auf die Ressourcen eines Projekts. Einfache User können die Attribute einer Projekt-Entität nicht verändern. Zudem sollen einfache User keine bestehenden User entfernen oder neue hinzufügen können. Einfache User können Datensätzen der anderen Entitäten hinzufügen, verändern und löschen. Projekt-Administratoren sollen alle Zugriffs-Rechte auf Ressourcen und Funktionen eines Projekts haben. Das schließt das Hinzufügen, Befördern und Entfernen von Benutzern ein.
+Über die Zeit sollen Benutzer ein Projekt verlassen und wieder beitreten können. Es ist nicht möglich einem Projekt, ohne die Zustimmung des Projekt-Teams beizutreten. Dafür wird ein geheimer Projekt-Schlüssel verwendet, der nur von Projekt-Administratoren einsehbar ist.
+
+**Aufgaben**
+
+Eine zentrale Funktion der Applikation ist die Erstellung und Verwaltung von Aufgaben. Die Aufgaben-Entität ist dem entsprechend wichtig. Die Aufgaben werden neben Entitäs-Attributen auch mit Meta-Informationen in „Tags“ beschrieben. Aufgaben haben die Attribute „Bezeichnung“, „Beschreibung“, „Erstellungs-“ und „Fertigstellungs-Zeitpunkt“, „Komplexität“, „Bearbeitungs-Status“ und „zuständige Person“ besitzen. Die Bezeichnung einer Aufgabe ist in einem Projekt eindeutig. Es sollen Aufgaben-Kompositionen und Abhängigkeiten zwischen Aufgaben möglich sein. Aufgaben sind nach der Erzeugung automatisch in dem „Backlog“ eines Projekts ein-sehbar, von wo sie einem „Kanban Board“ hinzugefügt werden können.
+
+**Kanban Board**
+
+Ein Kanban Board betrifft einen bestimmten Zeitraum („Sprint“). Nach einem Sprint besteht das Kanban Board weiter, kann aber nicht mehr bearbeitet werden. Ein altes Kanban Board kann in ein neues Kanban Board überführt werden.
+Ein Kanban Board kann im Rahmen dieser Klausurersatzleistung aus drei bis zu fünf Spalten bestehen, die den Status einer Aufgabe beschreiben. Die Spalten „ToDo“, „In Progress“, und „Done“ sind obligatorisch. Die Spalten „Review“ und „Testing“ können bei Bedarf hinzugefügt und wieder entfernt werden. Dabei sollen dort eingeordnete Aufgaben ihren Bearbeitungs-Status nicht verlieren. Die Spalte und die darin enthaltenen Aufgaben werden lediglich ausgeblendet. Aufgaben können einem Kanban Board hinzugefügt und auf dem Kanban Board in einen anderen Bearbeitungs-Status verschoben werden.
+Über einen Sprint können Statistiken angelegt werden. Dafür sollen entsprechende Kanban Boards als Repräsentation eines Sprints genutzt werden. Es soll z. B. ausgewer-tet werden, welcher Anteil der Aufgaben auf einem Kanban Board in einem bestimm-ten Bearbeitungs-Status ist.
+
+**Nachrichten**
+
+Ein Benutzer erhält Nachrichten über bestimmte Änderungen in den Projekten, denen er angehört. Diese Nachrichten haben einen Absender, einen Adressaten und einen Inhalt. Zudem wird über ein Feld festgehalten, ob die Nachricht vom Benutzer abgerufen wurde. Nachrichten sind nicht dazu gedacht, um Konversation abzuhalten.
 
 ## Technologien
 + Java
@@ -36,4 +35,4 @@ Wenn alle oberen Use Cases implementiert wurden, ist es möglich Statistiken üb
 + Spring Boot
 + Postman
 + GitHub: https://github.com/Krayaty/Taskitory
-+ Möglicherweise Docker (3 Container: App, DBMS, IAM-Server)
++ Docker Compose (3 Container: App, DBMS, IAM-Server)
