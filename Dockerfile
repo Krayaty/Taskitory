@@ -2,14 +2,9 @@
 # Build stage
 #
 FROM maven:3.8.4-openjdk-17-slim AS build
-ARG DATABASE_ADDR_ALIAS
-ARG DATABASE_PORT
-ARG DATABASE_NAME
-ARG DATABASE_CLIENT_USER
-ARG DATABASE_CLIENT_PW
 COPY src /Taskitory/src
 COPY pom.xml /Taskitory
-RUN mvn -f /Taskitory/pom.xml clean package
+RUN mvn -f /Taskitory/pom.xml -DskipTests=true clean package
 
 #
 # Package stage

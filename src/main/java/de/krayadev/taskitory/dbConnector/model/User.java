@@ -70,7 +70,7 @@ public class User {
         }
         result += "]\n" + "memberships: [";
         for (ProjectMembership membership: this.memberships) {
-            result += "{projectId" + membership.getProjekt() + "},\n";
+            result += "{projectId" + membership.getProject() + "},\n";
         }
         result += "]";
 

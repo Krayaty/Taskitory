@@ -17,7 +17,7 @@ public class MainController {
     @Autowired
     private UserRepo userRepo;
 
-    @RolesAllowed("Group-User")
+    @RolesAllowed("Group-Member")
     @RequestMapping(value = "/test")
     public List<User> test(){
         return userRepo.findAll();

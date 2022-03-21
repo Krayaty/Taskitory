@@ -50,8 +50,9 @@ public class KeycloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter
     protected void configure(final HttpSecurity http) throws Exception {
         super.configure(http);
         http.csrf().disable().sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-                .antMatchers("/api").hasRole("Group-Member")
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .sessionAuthenticationStrategy(sessionAuthenticationStrategy())
+                .and().authorizeRequests()
                 .anyRequest()
                 .authenticated();
     }
