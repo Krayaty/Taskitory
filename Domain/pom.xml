@@ -11,19 +11,5 @@
 
     <artifactId>Domain</artifactId>
     <name>Domain Layer</name>
-    <version>0.0.1</version>
-
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-    </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>de.krayadev</groupId>
-            <artifactId>Abstraction</artifactId>
-            <version>0.0.1</version>
-        </dependency>
-    </dependencies>
-
+    <version>${domain-version}</version>
 </project>

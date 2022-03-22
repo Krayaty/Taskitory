@@ -11,18 +11,13 @@
 
     <artifactId>Application</artifactId>
     <name>Application Layer</name>
-    <version>0.0.1</version>
-
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-    </properties>
+    <version>${application-version}</version>
 
     <dependencies>
         <dependency>
             <groupId>de.krayadev</groupId>
             <artifactId>Domain</artifactId>
-            <version>0.0.1</version>
+            <version>${domain-version}</version>
         </dependency>
     </dependencies>
 
