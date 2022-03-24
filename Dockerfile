@@ -1,10 +1,11 @@
 FROM maven:3.8.4-openjdk-17-slim AS DEPS
 WORKDIR /opt/Taskitory
 
-COPY Domain/pom.xml Domain/pom.xml
-COPY Application/pom.xml Application/pom.xml
-COPY Adapter/pom.xml Adapter/pom.xml
-COPY Plugins/pom.xml Plugins/pom.xml
+COPY 0-Abstraction/pom.xml 0-Abstraction/pom.xml
+COPY 1-Domain/pom.xml 1-Domain/pom.xml
+COPY 2-Application/pom.xml 2-Application/pom.xml
+COPY 3-Adapter/pom.xml 3-Adapter/pom.xml
+COPY 4-Plugins/pom.xml 4-Plugins/pom.xml
 COPY pom.xml .
 
 RUN mvn -B -e -C compile dependency:tree
@@ -15,10 +16,11 @@ COPY --from=deps /root/.m2 /root/.m2
 COPY --from=deps /opt/Taskitory/ /opt/Taskitory
 
 WORKDIR /opt/Taskitory
-COPY Domain/src Domain/src
-COPY Application/src Application/src
-COPY Adapter/src Adapter/src
-COPY Plugins/src Plugins/src
+COPY 0-Abstraction/src 0-Abstraction/src
+COPY 1-Domain/src 1-Domain/src
+COPY 2-Application/src 2-Application/src
+COPY 3-Adapter/src 3-Adapter/src
+COPY 4-Plugins/src 4-Plugins/src
 
 RUN mvn -B -e -C clean install -DskipTests=true
 
