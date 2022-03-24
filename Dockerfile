@@ -4,9 +4,10 @@ WORKDIR /opt/Taskitory
 COPY Domain/pom.xml Domain/pom.xml
 COPY Application/pom.xml Application/pom.xml
 COPY Adapter/pom.xml Adapter/pom.xml
+COPY Plugins/pom.xml Plugins/pom.xml
 COPY pom.xml .
 
-RUN mvn -B -e -C compile dependency:tree #org.apache.maven.plugins:maven-dependency-plugin:3.1.2:resolve -DexcludeArtifactIds=Domain -DexcludeArtifactIds=Application
+RUN mvn -B -e -C compile dependency:tree
 
 
 FROM maven:3.8.4-openjdk-17-slim AS BUILDER
@@ -17,6 +18,7 @@ WORKDIR /opt/Taskitory
 COPY Domain/src Domain/src
 COPY Application/src Application/src
 COPY Adapter/src Adapter/src
+COPY Plugins/src Plugins/src
 
 RUN mvn -B -e -C clean install -DskipTests=true
 

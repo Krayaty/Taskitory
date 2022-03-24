@@ -17,15 +17,17 @@
     <properties>
         <java.version>17</java.version>
         <target_dir>../target</target_dir>
-        <starter_class>Adapter/src/main/java/Krayadev/TaskitoryApplication.java</starter_class>
+        <starter_class>Plugins/src/main/java/Krayadev/TaskitoryApplication.java</starter_class>
         <domain-version>0.0.1</domain-version>
         <application-version>0.0.1</application-version>
         <adapter-version>0.0.1</adapter-version>
+        <plugins-version>0.0.1</plugins-version>
     </properties>
 
     <modules>
         <module>Domain</module>
         <module>Application</module>
+        <module>Plugins</module>
         <module>Adapter</module>
     </modules>
 
