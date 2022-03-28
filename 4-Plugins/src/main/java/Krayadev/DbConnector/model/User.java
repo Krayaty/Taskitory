@@ -64,4 +64,8 @@ public class User {
     @JsonIgnore
     private Set<ProjectMembership> memberships;
 
+    @OneToMany(mappedBy = "recipient", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Message> receivedMessages;
+
 }

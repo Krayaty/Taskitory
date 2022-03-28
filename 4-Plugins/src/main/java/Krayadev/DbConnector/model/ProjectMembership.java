@@ -23,7 +23,7 @@ public class ProjectMembership {
     private ProjectMembershipId id;
 
     @MapsId("projectId")
-    @ManyToOne(targetEntity = Project.class, cascade = CascadeType.ALL) // Todo cascade Types prüfen
+    @ManyToOne(targetEntity = Project.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "project", referencedColumnName = "id", nullable = false, updatable = false)
     private Project project;
 

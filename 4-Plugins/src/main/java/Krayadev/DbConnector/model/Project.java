@@ -40,4 +40,8 @@ public class Project {
     @JsonIgnore
     private Set<ProjectMembership> memberships;
 
+    @OneToMany(mappedBy = "origin", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Message> sentMessages;
+
 }
