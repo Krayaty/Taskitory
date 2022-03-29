@@ -19,7 +19,7 @@ import java.util.UUID;
 public class Message {
 
     @Id
-    private UUID id;
+    private final UUID id = UUID.randomUUID();
 
     @Column(length = 500, nullable = false, updatable = false)
     private String contents;
