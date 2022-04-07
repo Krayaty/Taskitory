@@ -9,15 +9,32 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+
     <artifactId>Domain</artifactId>
     <name>Domain Layer</name>
-    <version>${domain-version}</version>
 
     <dependencies>
         <dependency>
             <groupId>de.krayadev</groupId>
             <artifactId>Abstraction</artifactId>
-            <version>${abstraction-version}</version>
+            <version>${app_version}</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <debug>true</debug>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

@@ -11,7 +11,6 @@
 
     <artifactId>Plugins</artifactId>
     <name>Plugin Layer</name>
-    <version>${plugins-version}</version>
     <properties>
         <keycloak-version>17.0.0</keycloak-version>
     </properties>
@@ -20,7 +19,8 @@
         <dependency>
             <groupId>de.krayadev</groupId>
             <artifactId>Adapter</artifactId>
-            <version>${adapter-version}</version>
+            <version>${app_version}</version>
+            <scope>compile</scope>
         </dependency>
 
 
@@ -114,7 +114,16 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.6.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <debug>true</debug>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
