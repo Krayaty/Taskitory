@@ -5,7 +5,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
-import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,8 +15,6 @@ import java.util.UUID;
 public class Project {
 
     @Id
-    private final UUID id = UUID.randomUUID();
-
     @Column(length = 100, nullable = false)
     private String name;
 
@@ -30,7 +27,7 @@ public class Project {
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Tag> tags;
+    private Set<Task> tasks;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     @JsonIgnore

@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
-import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,9 +14,9 @@ import java.util.UUID;
 @Embeddable
 public class ProjectMembershipId implements Serializable {
 
-    @Column(nullable = false)
-    private UUID projectId;
+    @Column(length = 100, nullable = false, updatable = false)
+    private String projectName;
 
-    @Column(length = 36, nullable = false)
+    @Column(length = 36, nullable = false, updatable = false)
     private String userId;
 }

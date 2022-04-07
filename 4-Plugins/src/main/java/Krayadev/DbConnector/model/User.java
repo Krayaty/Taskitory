@@ -60,6 +60,10 @@ public class User {
     @JsonIgnore
     private Set<Task> assignedTasks;
 
+    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Task> createdTasks;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<ProjectMembership> memberships;

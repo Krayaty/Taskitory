@@ -22,7 +22,7 @@ public class Message {
     private final UUID id = UUID.randomUUID();
 
     @Column(length = 500, nullable = false, updatable = false)
-    private String contents;
+    private String content;
 
     @Column(length = 6, nullable = false, updatable = false)
     private final Timestamp dispatch = Timestamp.valueOf(LocalDateTime.now());
@@ -31,7 +31,7 @@ public class Message {
     private boolean read;
 
     @ManyToOne(targetEntity = Project.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "origin", referencedColumnName = "id", nullable = false, updatable = false)
+    @JoinColumn(name = "origin", referencedColumnName = "name", nullable = false, updatable = false)
     private Project origin;
 
     @ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL)

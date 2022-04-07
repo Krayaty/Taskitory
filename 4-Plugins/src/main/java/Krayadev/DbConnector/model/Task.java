@@ -31,7 +31,7 @@ public class Task {
     private String description;
 
     @Column(length = 2)
-    private int complexity = -1;
+    private int complexity;
 
     @Column(name = "created_on", length = 6, nullable = false)
     @GeneratedValue
@@ -48,7 +48,7 @@ public class Task {
     private int priority;
 
     @ManyToOne(targetEntity = Project.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "project", referencedColumnName = "id", nullable = false, updatable = false)
+    @JoinColumn(name = "project", referencedColumnName = "name", nullable = false, updatable = false)
     private Project project;
 
     @ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL)
@@ -61,11 +61,11 @@ public class Task {
 
     @ManyToOne(targetEntity = KanbanBoard.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "kanban_board", referencedColumnName = "id")
-    private KanbanBoard kanbanBoard;
+    private KanbanBoard assignedToKanbanBoard;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "task_has_tags",
+            name = "task_tag_assignment",
             joinColumns = { @JoinColumn(name = "task") },
             inverseJoinColumns = { @JoinColumn(name = "tag") }
     )

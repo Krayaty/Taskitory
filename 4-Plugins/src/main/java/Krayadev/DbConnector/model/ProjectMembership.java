@@ -1,6 +1,7 @@
 package Krayadev.DbConnector.model;
 
 import Krayadev.DbConnector.idClasses.ProjectMembershipId;
+import Krayadev.DbConnector.types.ProjectRole;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,19 +13,15 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "project_membership",
-        schema = "backend",
-        uniqueConstraints = {
-            @UniqueConstraint(columnNames = {"admin", "project"})
-        })
+@Table(name = "project_membership", schema = "backend")
 public class ProjectMembership {
 
     @EmbeddedId
     private ProjectMembershipId id;
 
-    @MapsId("projectId")
+    @MapsId("projectName")
     @ManyToOne(targetEntity = Project.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "project", referencedColumnName = "id", nullable = false, updatable = false)
+    @JoinColumn(name = "project", referencedColumnName = "name", nullable = false, updatable = false)
     private Project project;
 
     @MapsId("userId")
@@ -36,6 +33,7 @@ public class ProjectMembership {
     private final Timestamp startOfMembership = Timestamp.valueOf(LocalDateTime.now());
 
     @Column(nullable = false)
-    private boolean admin = false;
+    @Enumerated(EnumType.STRING)
+    private ProjectRole role = ProjectRole.MEMBER;
 
 }

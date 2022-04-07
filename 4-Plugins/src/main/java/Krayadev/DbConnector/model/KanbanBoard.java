@@ -33,7 +33,7 @@ public class KanbanBoard {
     @Column(name = "start_of_sprint", length = 6, updatable = false)
     private final Timestamp startOfSprint = Timestamp.valueOf(LocalDateTime.now());;
 
-    @Column(name = "end_of_sprint", length = 6, updatable = false)
+    @Column(name = "end_of_sprint", length = 6, nullable = false, updatable = false)
     private Timestamp endOfSprint;
 
     @Column(name = "show_review_column", nullable = false)
@@ -43,10 +43,10 @@ public class KanbanBoard {
     private boolean showTestingColumn = false;
 
     @ManyToOne(targetEntity = Project.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "project", referencedColumnName = "id", nullable = false, updatable = false)
+    @JoinColumn(name = "project", referencedColumnName = "name", nullable = false, updatable = false)
     private Project project;
 
-    @OneToMany(mappedBy = "kanbanBoard", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "assignedToKanbanBoard", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Task> assignedTasks;
 
