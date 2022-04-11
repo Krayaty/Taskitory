@@ -17,8 +17,6 @@
     <name>Taskitory</name>
     <properties>
         <java.version>17</java.version>
-        <target_dir>../target</target_dir>
-        <starter_class>Plugins/src/main/java/krayadev/TaskitoryApplication.java</starter_class>
         <app_version>0.0.1</app_version>
     </properties>
 
@@ -31,17 +29,15 @@
     </modules>
 
     <build>
-        <directory>${target_dir}</directory>
-        <finalName>Taskitory${app_version}</finalName>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <debug>true</debug>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <mainClass>krayadev.TaskitoryApplication</mainClass>
+                    <outputFile>Taskitory${app_version}.jar</outputFile>
+                    <outputDirectory>../target</outputDirectory>
+                    <classifier>exe</classifier>
                 </configuration>
             </plugin>
         </plugins>

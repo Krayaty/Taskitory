@@ -26,7 +26,7 @@ RUN mvn -B -e -C clean install -DskipTests=true
 
 
 FROM openjdk:17-jdk-slim AS DEPLOYER
-COPY --from=builder /opt/Taskitory/target/Taskitory0.0.1.jar /opt/Taskitory/Taskitory.jar
+COPY --from=builder /opt/Taskitory/target/Plugins-0.0.1-exe.jar /opt/Taskitory/Taskitory.jar
 
 EXPOSE 8080
 ENTRYPOINT [ "java", "-jar", "/opt/Taskitory/Taskitory.jar" ]

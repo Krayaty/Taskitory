@@ -26,9 +26,9 @@ public class Project {
     @Column(length = 1000)
     private String description;
 
-    @Column(length = 36, nullable = false, unique = true, updatable = false)
-    private String key;
-    //private final ProjectSecurityKey key = new ProjectSecurityKey();
+    @Embedded
+    @Column(length = 128, columnDefinition = "bpchar(128)", unique = true, updatable = false)
+    private final ProjectSecurityKey key = new ProjectSecurityKey();
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     @JsonIgnore

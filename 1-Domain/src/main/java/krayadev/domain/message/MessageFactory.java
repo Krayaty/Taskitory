@@ -11,7 +11,7 @@ public class MessageFactory {
 
     @SneakyThrows
     public static Message createInvitationToProjectForUser(Project project, User user, ProjectSecurityKey projectSecretKey) {
-        String content = projectSecretKey.getHashedKey();
+        String content = projectSecretKey.hashedKey();
         return new Message(project, user, content, MessageType.INVITATION);
     }
 
