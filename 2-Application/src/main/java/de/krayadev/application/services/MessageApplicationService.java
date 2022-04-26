@@ -1,6 +1,6 @@
 package de.krayadev.application.services;
 
-import de.krayadev.domain.message.MessageRepository;
+import de.krayadev.domain.repositories.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
