@@ -34,7 +34,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>krayadev.TaskitoryApplication</mainClass>
+                    <mainClass>de.krayadev.TaskitoryApplication</mainClass>
                     <outputFile>Taskitory${app_version}.jar</outputFile>
                     <outputDirectory>../target</outputDirectory>
                     <classifier>exe</classifier>
