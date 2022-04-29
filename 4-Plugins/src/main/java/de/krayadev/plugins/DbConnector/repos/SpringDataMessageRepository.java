@@ -1,6 +1,6 @@
 package de.krayadev.plugins.DbConnector.repos;
 
-import de.krayadev.domain.aggregates.userAggregate.entities.message.Message;
+import de.krayadev.domain.aggregates.projectAggregate.entities.message.Message;
 import de.krayadev.domain.repositories.MessageRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 

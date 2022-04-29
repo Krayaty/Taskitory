@@ -1,15 +1,21 @@
 package de.krayadev.domain.aggregates.userAggregate.entities.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import de.krayadev.domain.aggregates.projectAggregate.entities.message.MessageContentJSONKey;
+import de.krayadev.domain.aggregates.projectAggregate.entities.message.MessageType;
+import de.krayadev.domain.aggregates.projectAggregate.entities.project.Project;
 import de.krayadev.domain.aggregates.taskAggregate.entities.task.Task;
-import de.krayadev.domain.aggregates.userAggregate.entities.message.Message;
+import de.krayadev.domain.aggregates.projectAggregate.entities.message.Message;
 import de.krayadev.domain.aggregates.projectAggregate.entities.projectMembership.ProjectMembership;
 import de.krayadev.domain.aggregates.userAggregate.valueObjects.IrrelevantUserData;
 import lombok.*;
+import org.json.JSONObject;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
@@ -46,28 +52,75 @@ public class User {
     @JsonIgnore
     private Set<ProjectMembership> memberships = new HashSet<>();
 
-    @OneToMany(mappedBy = "recipient", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "recipient", cascade = CascadeType.MERGE)
     @JsonIgnore
     private Set<Message> receivedMessages = new HashSet<>();
 
-    public void assignTask(@NonNull Task task){
-        assignedTasks.add(task);
+
+    public boolean isProjectMember(@NonNull Project project){
+        ProjectMembership projectMembership = this.memberships.stream().filter(membership -> membership.getProject().equals(project)).findFirst().orElse(null);
+        return projectMembership != null;
     }
 
-    public void unassignTask(@NonNull Task task){
-        assignedTasks.remove(task);
+    private boolean hasAccessTo(@NonNull Task task){
+        return this.isProjectMember(task.getProject());
     }
 
-    public void addMembership(@NonNull ProjectMembership membership){
+    public void assignToTask(@NonNull Task task){
+        if(!this.hasAccessTo(task))
+            throw new IllegalStateException("User can not access task because he is not a member of the project");
+
+        task.setResponsibleUser(this);
+    }
+
+    public void unassignFromTask(@NonNull Task task){
+        if(!this.hasAccessTo(task))
+            throw new IllegalStateException("User can not access task because he is not a member of the project");
+
+        task.unassignResponsibleUser();
+    }
+
+    public void acceptInvitation(@NonNull Message invitation){
+        if(!invitation.hasType(MessageType.INVITATION))
+            throw new IllegalArgumentException("Message is not an invitation");
+
+        Project origin = invitation.getOrigin();
+        JSONObject content = invitation.getContentAsJson();
+        String projectSecurityKey = String.valueOf(content.get(MessageContentJSONKey.PROJECT_SEC_KEY.getValue()));
+        origin.add(this, projectSecurityKey);
+    }
+
+    public void declineInvitation(@NonNull Message invitation){
+        if(!invitation.hasType(MessageType.INVITATION))
+            throw new IllegalArgumentException("Message is not an invitation");
+
+        Project origin = invitation.getOrigin();
+        origin.revoke(invitation);
+    }
+
+    private void addMembership(@NonNull ProjectMembership membership){
         memberships.add(membership);
     }
 
-    public void removeMembership(@NonNull ProjectMembership membership){
+    public void leave(@NonNull Project project){
+        memberships.stream().filter(membership -> membership.getProject().equals(project)).findFirst().ifPresentOrElse(
+                this::removeMembership, () -> {
+                    throw new IllegalStateException("User is not a member of the project");
+                });
+    }
+
+    private void removeMembership(@NonNull ProjectMembership membership){
         memberships.remove(membership);
     }
 
     public void receiveMessage(@NonNull Message message){
         receivedMessages.add(message);
+    }
+
+    public void receiveMessages(@NonNull Iterable<Message> messages){
+        for (Message message : messages) {
+            this.receiveMessage(message);
+        }
     }
 
     public void deleteMessage(@NonNull Message message){

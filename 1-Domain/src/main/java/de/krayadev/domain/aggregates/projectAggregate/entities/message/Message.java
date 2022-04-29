@@ -1,8 +1,8 @@
-package de.krayadev.domain.aggregates.userAggregate.entities.message;
+package de.krayadev.domain.aggregates.projectAggregate.entities.message;
 
 import de.krayadev.domain.aggregates.projectAggregate.entities.project.Project;
 import de.krayadev.domain.aggregates.userAggregate.entities.user.User;
-import de.krayadev.domain.aggregates.userAggregate.valueObjects.MessageContent;
+import de.krayadev.domain.aggregates.projectAggregate.valueObjects.MessageContent;
 import lombok.*;
 import org.json.JSONObject;
 

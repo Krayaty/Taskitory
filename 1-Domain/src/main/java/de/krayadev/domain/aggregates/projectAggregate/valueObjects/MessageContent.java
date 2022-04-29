@@ -1,4 +1,4 @@
-package de.krayadev.domain.aggregates.userAggregate.valueObjects;
+package de.krayadev.domain.aggregates.projectAggregate.valueObjects;
 
 import lombok.*;
 import org.json.JSONObject;

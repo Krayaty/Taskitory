@@ -3,9 +3,9 @@ package de.krayadev.domain.aggregates.projectAggregate.entities.project;
 import de.krayadev.domain.aggregates.projectAggregate.entities.kanbanBoard.KanbanBoard;
 import de.krayadev.domain.aggregates.projectAggregate.entities.projectMembership.ProjectRole;
 import de.krayadev.domain.aggregates.taskAggregate.entities.task.Task;
-import de.krayadev.domain.aggregates.userAggregate.entities.message.Message;
-import de.krayadev.domain.aggregates.userAggregate.entities.message.MessageFactory;
-import de.krayadev.domain.aggregates.userAggregate.entities.message.MessageType;
+import de.krayadev.domain.aggregates.projectAggregate.entities.message.Message;
+import de.krayadev.domain.aggregates.projectAggregate.entities.message.MessageFactory;
+import de.krayadev.domain.aggregates.projectAggregate.entities.message.MessageType;
 import de.krayadev.domain.aggregates.projectAggregate.entities.projectMembership.ProjectMembership;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.krayadev.domain.aggregates.projectAggregate.valueObjects.ProjectSecurityKey;
@@ -96,7 +96,18 @@ public class Project {
         this.tasks.remove(task);
     }
 
+    public boolean isTeamMember(@NonNull User user){
+        return this.getProjectMembershipOf(user) != null;
+    }
+
+    private ProjectMembership getProjectMembershipOf(@NonNull User user){
+        return this.memberships.stream().filter(m -> m.getUser().equals(user)).findFirst().orElse(null);
+    }
+
     public void add(@NonNull User teamMember, String projectSecurityKey){
+        if(this.isTeamMember(teamMember))
+            throw new IllegalArgumentException("User is already a member of this project");
+
         List<Message> invitationsToUser = this.sentMessages.stream()
                 .filter(message -> message.hasType(MessageType.INVITATION) && message.isFor(teamMember))
                 .sorted((m1, m2) -> m2.getDispatch().compareTo(m1.getDispatch())).collect(Collectors.toList());
@@ -113,17 +124,38 @@ public class Project {
 
         ProjectMembership membership = new ProjectMembership(this, teamMember, role);
         this.memberships.add(membership);
-        teamMember.addMembership(membership);
+
+        this.memberships.stream().map(ProjectMembership::getUser)
+                .forEach(user -> this.send(MessageFactory.createNewProjectMemberMessage(this, user, membership)));
     }
 
     public void remove(@NonNull User teamMember){
-        this.memberships.stream().filter(membership -> membership.getUser().equals(teamMember))
-                .findFirst().ifPresentOrElse(membership -> {
-                    this.memberships.remove(membership);
-                    this.send(MessageFactory.createKickedFromProjectMessage(this, teamMember));
-                }, () -> {
-                    throw new IllegalArgumentException("User is not a member of this project");
-                });
+        if(!this.isTeamMember(teamMember))
+            throw new IllegalArgumentException("User is not a member of this project");
+
+        ProjectMembership membership = this.getProjectMembershipOf(teamMember);
+        this.memberships.remove(membership);
+        this.send(MessageFactory.createKickedFromProjectMessage(this, teamMember));
+
+    }
+
+    public void promote(@NonNull User admin, @NonNull User teamMember){
+        if(!this.isAdmin(admin))
+            throw new IllegalArgumentException("Unauthorized promotion: Given user is not an admin of this project");
+
+        if(!this.isTeamMember(teamMember))
+            throw new IllegalArgumentException("User is not a member of this project");
+
+        ProjectMembership membership = this.getProjectMembershipOf(teamMember);
+        membership.setRole(ProjectRole.ADMIN);
+    }
+
+    public boolean isAdmin(@NonNull User user){
+        if(!this.isTeamMember(user))
+            throw new IllegalArgumentException("User is not a member of this project");
+
+        ProjectMembership membership = this.getProjectMembershipOf(user);
+        return membership.getRole() == ProjectRole.ADMIN;
     }
 
     public void invite(@NonNull User user, @NonNull ProjectRole role){
@@ -140,8 +172,6 @@ public class Project {
 
     public void send(@NonNull Message message){
         this.sentMessages.add(message);
-        User recipient = message.getRecipient();
-        recipient.receiveMessage(message);
     }
 
 }

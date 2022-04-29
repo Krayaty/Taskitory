@@ -6,7 +6,7 @@ import de.krayadev.domain.aggregates.taskAggregate.valueObjects.Priority;
 import de.krayadev.domain.aggregates.taskAggregate.valueObjects.TaskLifeTime;
 import lombok.*;
 import de.krayadev.domain.aggregates.projectAggregate.entities.kanbanBoard.KanbanBoard;
-import de.krayadev.domain.aggregates.taskAggregate.entities.tag.Tag;
+import de.krayadev.domain.aggregates.tagAggregate.entities.tag.Tag;
 import de.krayadev.domain.aggregates.projectAggregate.entities.project.Project;
 
 import javax.persistence.*;
@@ -134,6 +134,10 @@ public class Task {
 
     public void unassign(Tag tag){
         this.assignedTags.remove(tag);
+    }
+
+    public boolean isResponsible(User user){
+        return this.responsibleUser == user;
     }
 
 }

@@ -8,7 +8,7 @@ import de.krayadev.domain.aggregates.taskAggregate.valueObjects.TaskLifeTime;
 import lombok.NonNull;
 import org.apache.commons.lang3.builder.Builder;
 import de.krayadev.domain.aggregates.projectAggregate.entities.project.Project;
-import de.krayadev.domain.aggregates.taskAggregate.entities.tag.Tag;
+import de.krayadev.domain.aggregates.tagAggregate.entities.tag.Tag;
 
 import java.util.Collection;
 import java.util.HashSet;
