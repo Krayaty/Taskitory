@@ -6,10 +6,11 @@ import de.krayadev.domain.aggregates.taskAggregate.valueObjects.Priority;
 import de.krayadev.domain.aggregates.taskAggregate.valueObjects.TaskLifeTime;
 import lombok.*;
 import de.krayadev.domain.aggregates.projectAggregate.entities.kanbanBoard.KanbanBoard;
-import de.krayadev.domain.aggregates.tagAggregate.entities.tag.Tag;
+import de.krayadev.domain.aggregates.userAggregate.entities.tag.Tag;
 import de.krayadev.domain.aggregates.projectAggregate.entities.project.Project;
 
 import javax.persistence.*;
+import java.time.Duration;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -17,7 +18,6 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor
 @Getter
-@Setter
 @Entity
 @Table(name = "task",
         schema = "backend",
@@ -52,7 +52,7 @@ public class Task {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private TaskStatus status = TaskStatus.UNASSIGNED;
+    private TaskStatus status = TaskStatus.TODO;
 
     @ManyToOne(targetEntity = Project.class)
     @JoinColumn(name = "project", referencedColumnName = "name", nullable = false, updatable = false)
@@ -68,7 +68,7 @@ public class Task {
 
     @ManyToOne(targetEntity = KanbanBoard.class)
     @JoinColumn(name = "kanban_board", referencedColumnName = "id")
-    private KanbanBoard assignedToKanbanBoard;
+    private KanbanBoard assignedKanbanBoard;
 
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
@@ -78,66 +78,70 @@ public class Task {
     )
     private Set<Tag> assignedTags = new HashSet<>();
 
-    public void setName(@NonNull String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = "";
-        if (description != null)
-            this.description = description;
-    }
-
-    public void setComplexity(@NonNull int complexity) {
-        this.complexity = new Complexity(complexity);
-    }
-
-    public void setComplexity(@NonNull Complexity complexity) {
-        this.complexity = complexity;
-    }
-
-    public void changeStatus(@NonNull TaskStatus toStatus) {
-        if(toStatus == TaskStatus.UNASSIGNED){
-            this.moveToBacklog();
-            return;
-        }
-
-        if (this.status == TaskStatus.DONE)
-            this.lifeTime.reopen();
-
-        this.status = toStatus;
-    }
-
-    public void moveToBacklog() {
-        this.status = TaskStatus.UNASSIGNED;
-    }
-
-    public void assignTo(@NonNull KanbanBoard kanbanBoard) {
-        this.assignedToKanbanBoard = kanbanBoard;
-    }
-
-    public void unassignFromKanbanBoard(){
-        this.assignedToKanbanBoard = null;
-    }
-
-    public void assign(@NonNull User responsibleUser){
-        this.responsibleUser = responsibleUser;
-    }
-
-    public void unassignResponsibleUser(){
-        this.responsibleUser = null;
-    }
-
-    public void assign(Tag tag){
-        this.assignedTags.add(tag);
-    }
-
-    public void unassign(Tag tag){
-        this.assignedTags.remove(tag);
+    public boolean belongsTo(@NonNull Project project) {
+        return this.project.equals(project);
     }
 
     public boolean isResponsible(User user){
         return this.responsibleUser == user;
+    }
+
+    public Duration getProcessingDuration() {
+        return this.lifeTime.getProcessingDuration();
+    }
+
+    public boolean completed() {
+        return this.lifeTime.isCompleted();
+    }
+
+    private boolean isAssignedTo(KanbanBoard kanbanBoard){
+        return this.assignedKanbanBoard.equals(kanbanBoard);
+    }
+
+    public void changeName(@NonNull String newName) {
+        this.name = newName;
+    }
+
+    public void changeDescription(String newDescription) {
+        this.description = "";
+        if (newDescription != null)
+            this.description = newDescription;
+    }
+
+    public void changeComplexity(@NonNull int complexity) {
+        this.complexity = new Complexity(complexity);
+    }
+
+    public void changeComplexity(@NonNull Complexity complexity) {
+        this.complexity = complexity;
+    }
+
+    public void changeStatus(@NonNull TaskStatus newStatus) {
+        if(this.status == newStatus)
+            throw new IllegalArgumentException("Task status cannot be changed to the same status");
+
+        if (this.status == TaskStatus.DONE)
+            this.lifeTime.reopen();
+
+        this.status = newStatus;
+    }
+
+    public void moveToBacklog() {
+        this.assignedKanbanBoard = null;
+    }
+
+    public void assign(@NonNull Tag tag){
+        if(this.assignedTags.contains(tag))
+            throw new IllegalArgumentException("Task is already assigned to this tag");
+
+        this.assignedTags.add(tag);
+    }
+
+    public void unassign(Tag tag){
+        if(!this.assignedTags.contains(tag))
+            throw new IllegalArgumentException("Task is not assigned to this tag");
+
+        this.assignedTags.remove(tag);
     }
 
 }

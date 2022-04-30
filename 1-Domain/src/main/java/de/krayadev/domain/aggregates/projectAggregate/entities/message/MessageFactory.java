@@ -20,15 +20,16 @@ public class MessageFactory {
         return new Message(content, MessageType.INVITATION, origin, recipient);
     }
 
-    public static Message createProjectMembershipRoleChangeMessage(ProjectMembership membership, ProjectRole newRole) {
+    public static Message createProjectMemberRoleChangeMessage(User recipient, ProjectMembership membership, ProjectRole newRole) {
         JSONObject contentAsJSON = new JSONObject();
         contentAsJSON.put(MessageContentJSONKey.TITLE.getValue(), "Rolle geändert");
         contentAsJSON.put(MessageContentJSONKey.PROJECT_NAME.getValue(), membership.getProject().getName());
+        contentAsJSON.put(MessageContentJSONKey.USER_NAME.getValue(), membership.getUser().getUsername());
         contentAsJSON.put(MessageContentJSONKey.OLD_ROLE.getValue(), membership.getRole());
         contentAsJSON.put(MessageContentJSONKey.NEW_ROLE.getValue(), newRole);
 
         MessageContent content = new MessageContent(contentAsJSON);
-        return new Message(content, MessageType.ROLE_CHANGE, membership.getProject(), membership.getUser());
+        return new Message(content, MessageType.ROLE_CHANGE, membership.getProject(), recipient);
     }
 
     public static Message createProjectDeletedMessage(Project origin, User recipient) {

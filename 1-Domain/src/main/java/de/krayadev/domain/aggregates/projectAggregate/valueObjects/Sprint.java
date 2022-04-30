@@ -78,4 +78,8 @@ public final class Sprint {
     public int hashCode() {
         return Objects.hash(startOfSprint, endOfSprint);
     }
+
+    public boolean isOver() {
+        return endOfSprint.before(Timestamp.valueOf(LocalDateTime.now()));
+    }
 }

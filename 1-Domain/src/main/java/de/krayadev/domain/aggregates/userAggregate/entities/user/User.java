@@ -7,6 +7,7 @@ import de.krayadev.domain.aggregates.projectAggregate.entities.project.Project;
 import de.krayadev.domain.aggregates.taskAggregate.entities.task.Task;
 import de.krayadev.domain.aggregates.projectAggregate.entities.message.Message;
 import de.krayadev.domain.aggregates.projectAggregate.entities.projectMembership.ProjectMembership;
+import de.krayadev.domain.aggregates.userAggregate.entities.tag.Tag;
 import de.krayadev.domain.aggregates.userAggregate.valueObjects.IrrelevantUserData;
 import lombok.*;
 import org.json.JSONObject;
@@ -15,7 +16,6 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
@@ -48,7 +48,7 @@ public class User {
     @JsonIgnore
     private Set<Task> createdTasks = new HashSet<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private Set<ProjectMembership> memberships = new HashSet<>();
 
@@ -56,6 +56,9 @@ public class User {
     @JsonIgnore
     private Set<Message> receivedMessages = new HashSet<>();
 
+    @OneToMany(mappedBy="creator", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private Set<Tag> createdTags = new HashSet<>();
 
     public boolean isProjectMember(@NonNull Project project){
         ProjectMembership projectMembership = this.memberships.stream().filter(membership -> membership.getProject().equals(project)).findFirst().orElse(null);
@@ -66,18 +69,22 @@ public class User {
         return this.isProjectMember(task.getProject());
     }
 
-    public void assignToTask(@NonNull Task task){
-        if(!this.hasAccessTo(task))
-            throw new IllegalStateException("User can not access task because he is not a member of the project");
-
-        task.setResponsibleUser(this);
+    private void removeMembership(@NonNull ProjectMembership membership){
+        memberships.remove(membership);
     }
 
-    public void unassignFromTask(@NonNull Task task){
+    public void takeResponsibilityFor(@NonNull Task task){
         if(!this.hasAccessTo(task))
             throw new IllegalStateException("User can not access task because he is not a member of the project");
 
-        task.unassignResponsibleUser();
+        this.assignedTasks.add(task);
+    }
+
+    public void giveUpResponsibilityFor(@NonNull Task task){
+        if(!this.hasAccessTo(task))
+            throw new IllegalStateException("User can not access task because he is not a member of the project");
+
+        this.assignedTasks.remove(task);
     }
 
     public void acceptInvitation(@NonNull Message invitation){
@@ -90,18 +97,6 @@ public class User {
         origin.add(this, projectSecurityKey);
     }
 
-    public void declineInvitation(@NonNull Message invitation){
-        if(!invitation.hasType(MessageType.INVITATION))
-            throw new IllegalArgumentException("Message is not an invitation");
-
-        Project origin = invitation.getOrigin();
-        origin.revoke(invitation);
-    }
-
-    private void addMembership(@NonNull ProjectMembership membership){
-        memberships.add(membership);
-    }
-
     public void leave(@NonNull Project project){
         memberships.stream().filter(membership -> membership.getProject().equals(project)).findFirst().ifPresentOrElse(
                 this::removeMembership, () -> {
@@ -109,22 +104,63 @@ public class User {
                 });
     }
 
-    private void removeMembership(@NonNull ProjectMembership membership){
-        memberships.remove(membership);
+    public void create(@NonNull Tag tag){
+        if(!tag.isCreator(this))
+            throw new IllegalStateException("User has to be assigned as creator for given tag");
+
+        this.createdTags.add(tag);
+    }
+
+    public void assignTagToTask(@NonNull Tag tag, @NonNull Task task){
+        if(!this.hasAccessTo(task))
+            throw new IllegalStateException("User can not access task because he is not a member of the project");
+
+        task.assign(tag);
+    }
+
+    public void unassignTagFromTask(@NonNull Tag tag, @NonNull Task task){
+        if(!this.hasAccessTo(task))
+            throw new IllegalStateException("User can not access task because he is not a member of the project");
+
+        task.unassign(tag);
+    }
+
+    public void delete(@NonNull Tag tag){
+        if(!tag.isCreator(this))
+            throw new IllegalStateException("Tags can only be deleted by their creator");
+
+        this.createdTags.remove(tag);
     }
 
     public void receiveMessage(@NonNull Message message){
+        if(!message.isFor(this))
+            throw new IllegalArgumentException("Message is not for this user");
+
         receivedMessages.add(message);
     }
 
-    public void receiveMessages(@NonNull Iterable<Message> messages){
-        for (Message message : messages) {
-            this.receiveMessage(message);
-        }
+    public List<Message> retrieveAllMessages(){
+        return this.receivedMessages.stream().toList();
+    }
+
+    public List<Message> retrieveUnreadMessages(){
+        return this.receivedMessages.stream().filter(message -> !message.isRead()).toList();
+    }
+
+    public List<Message> retrieveMessagesOfType(@NonNull MessageType type){
+        return this.receivedMessages.stream().filter(message -> message.hasType(type)).toList();
     }
 
     public void deleteMessage(@NonNull Message message){
         receivedMessages.remove(message);
+    }
+
+    private Message readMessage(@NonNull Message message){
+        if(!message.isFor(this))
+            throw new IllegalArgumentException("Message is not for this user");
+
+        message.markAsRead();
+        return message;
     }
 
 }

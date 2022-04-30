@@ -46,7 +46,10 @@ public class ProjectMembership {
         this.role = role;
     }
 
-    public void setRole(ProjectRole role) {
-        this.role = role;
+    public void promote() {
+        if(this.role == ProjectRole.ADMIN)
+            throw new IllegalStateException("Cannot promote admin to admin");
+
+        this.role = ProjectRole.ADMIN;
     }
 }

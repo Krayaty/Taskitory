@@ -18,9 +18,9 @@ public class CreateKanbanBoard  {
 
     private Sprint sprint;
 
-    private boolean showReviewColumn = false;
+    private boolean showReviewColumn;
 
-    private boolean showTestingColumn = false;
+    private boolean showTestingColumn;
 
     private Project project;
 
@@ -29,6 +29,7 @@ public class CreateKanbanBoard  {
     private CreateKanbanBoard(@NonNull String name) {
         this.name = name;
         this.description = "";
+        this.showReviewColumn = false;
         this.showTestingColumn = false;
         this.assignedTasks = new HashSet<>();
     }

@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import javax.persistence.Embeddable;
 import java.sql.Timestamp;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -40,6 +41,13 @@ public final class TaskLifeTime {
 
     public void reopen() {
         this.completedOn = null;
+    }
+
+    public Duration getProcessingDuration() {
+        if(this.isActive())
+            throw new IllegalStateException("Task is not completed yet");
+
+        return Duration.between(this.createdOn.toLocalDateTime(), this.completedOn.toLocalDateTime());
     }
 
     @Override

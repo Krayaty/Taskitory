@@ -1,6 +1,7 @@
-package de.krayadev.domain.aggregates.tagAggregate.entities.tag;
+package de.krayadev.domain.aggregates.userAggregate.entities.tag;
 
 import de.krayadev.domain.aggregates.taskAggregate.entities.task.Task;
+import de.krayadev.domain.aggregates.userAggregate.entities.user.User;
 import lombok.*;
 
 import javax.persistence.*;
@@ -27,6 +28,11 @@ public class Tag {
     @Column(length = 500)
     private String description;
 
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "creator", referencedColumnName = "id", nullable = false, updatable = false)
+    @NonNull
+    private User creator;
+
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "task_tag_assignment",
@@ -36,18 +42,14 @@ public class Tag {
     @NonNull
     private Set<Task> assignedTo = new HashSet<>();
 
-    public void setDescription(String description) {
+    public void changeDescription(String newDescription) {
         this.description = "";
-        if (description != null)
-            this.description = description;
+        if (newDescription != null)
+            this.description = newDescription;
     }
 
-    public void assignTo(@NonNull Task task){
-        this.assignedTo.add(task);
-    }
-
-    public void unassignFrom(@NonNull Task task){
-        this.assignedTo.remove(task);
+    public boolean isCreator(User creator) {
+        return this.creator.equals(creator);
     }
 
 }
