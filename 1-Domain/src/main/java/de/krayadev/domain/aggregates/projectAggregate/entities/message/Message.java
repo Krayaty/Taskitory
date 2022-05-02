@@ -48,7 +48,11 @@ public class Message {
     @JoinColumn(name = "recipient", referencedColumnName = "id", nullable = false, updatable = false)
     @NonNull
     private User recipient;
+
     public void markAsRead() {
+        if(this.read)
+           throw new IllegalStateException("Message was already read");
+
     	this.read = true;
     }
 

@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@EqualsAndHashCode(of = {"de/krayadev/domain/aggregates/projectAggregate/entities/project", "de/krayadev/domain/aggregates/projectAggregate/entities/user"})
+@EqualsAndHashCode(of = {"de/krayadev/domain/aggregates/projectAggregate/entities/project", "de/krayadev/domain/aggregates/userAggregate/entities/user"})
 @ToString(exclude = {"id"})
 @Getter
 @Setter
@@ -47,9 +47,14 @@ public class ProjectMembership {
     }
 
     public void promote() {
-        if(this.role == ProjectRole.ADMIN)
+        if(this.isAdmin())
             throw new IllegalStateException("Cannot promote admin to admin");
 
         this.role = ProjectRole.ADMIN;
     }
+
+    public boolean isAdmin() {
+        return this.role == ProjectRole.ADMIN;
+    }
+
 }

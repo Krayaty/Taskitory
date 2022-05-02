@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -68,24 +69,41 @@ public class Project {
             this.description = description;
     }
 
-    private boolean isTeamMember(@NonNull User user){
-        return this.getMembershipOf(user) != null;
-    }
-
     private ProjectMembership getMembershipOf(@NonNull User user){
         return this.memberships.stream().filter(m -> m.getUser().equals(user)).findFirst().orElse(null);
     }
 
-    private void send(@NonNull Message message){
-        this.sentMessages.add(message);
+    private void remove(@NonNull User teamMember){
+        ProjectMembership membership = this.getMembershipOf(teamMember);
+        this.memberships.remove(membership);
     }
 
-    private boolean isAdmin(@NonNull User user){
+    public boolean isTeamMember(@NonNull User user){
+        return this.getMembershipOf(user) != null;
+    }
+
+    public boolean isAdmin(@NonNull User user){
         if(!this.isTeamMember(user))
             throw new IllegalArgumentException("User is not a member of this project");
 
         ProjectMembership membership = this.getMembershipOf(user);
-        return membership.getRole() == ProjectRole.ADMIN;
+        return membership.isAdmin();
+    }
+
+    private boolean possesses(@NonNull KanbanBoard kanbanBoard){
+        return this.kanbanBoards.contains(kanbanBoard);
+    }
+
+    private boolean possesses(@NonNull Task task){
+        return this.tasks.contains(task);
+    }
+
+    private boolean sent(@NonNull Message message){
+        return this.sentMessages.contains(message);
+    }
+
+    private void send(@NonNull Message message){
+        this.sentMessages.add(message);
     }
 
     public void rename(@NonNull String newName) {
@@ -102,88 +120,90 @@ public class Project {
         this.key = new ProjectSecurityKey();
     }
 
-    public void create(@NonNull KanbanBoard kanbanBoard){
-        if(!kanbanBoard.belongsTo(this))
-            throw new IllegalArgumentException("Kanban board should be assigned to this project");
+    public void create(@NonNull KanbanBoard kanbanBoard) {
+        if(!this.possesses(kanbanBoard))
+            throw new IllegalArgumentException("Kanban board should be possessed by this project");
 
         this.kanbanBoards.add(kanbanBoard);
     }
 
     public void migrate(@NonNull KanbanBoard oldKanbanBoard, @NonNull Sprint newSprint){
-        if(!oldKanbanBoard.belongsTo(this))
-            throw new IllegalArgumentException("Kanban board should be assigned to this project");
+        if(!this.possesses(oldKanbanBoard))
+            throw new IllegalArgumentException("Kanban board should be possessed by this project");
 
         KanbanBoard newKanbanBoard = oldKanbanBoard.migrate(newSprint);
-        this.kanbanBoards.add(newKanbanBoard);
+        this.create(newKanbanBoard);
+    }
+
+    public List<KanbanBoard> getKanbanBoardsWithActiveSprint(){
+        return this.kanbanBoards.stream().filter(kb -> kb.isUsable()).collect(Collectors.toList());
+    }
+
+    public List<KanbanBoard> getKanbanBoardsWithFinishedSprint(){
+        return this.kanbanBoards.stream().filter(kb -> !kb.isUsable()).collect(Collectors.toList());
     }
 
     public void putTaskOnKanbanBoard(@NonNull Task task, @NonNull KanbanBoard kanbanBoard){
-        if(!this.tasks.contains(task))
-            throw new IllegalArgumentException("Task should be assigned to this project");
+        if(!this.possesses(task))
+            throw new IllegalArgumentException("Task should be possessed by this project");
 
-        if(!this.kanbanBoards.contains(kanbanBoard))
-            throw new IllegalArgumentException("Kanban board should be assigned to this project");
-
-        if(!kanbanBoard.isUsable())
-            throw new IllegalArgumentException("Kanban board is not usable because the sprint is over");
+        if(!this.possesses(kanbanBoard))
+            throw new IllegalArgumentException("Kanban board should be possessed by this project");
 
         kanbanBoard.assign(task);
     }
 
+    public void moveTaskOnKanbanBoard(@NonNull Task task, @NonNull KanbanBoard kanbanBoard, @NonNull TaskStatus newState){
+        if(!this.possesses(task))
+            throw new IllegalArgumentException("Task should be possessed by this project");
+
+        if(!this.possesses(kanbanBoard))
+            throw new IllegalArgumentException("Kanban board should be possessed by this project");
+
+        kanbanBoard.move(task, newState);
+    }
+
     public void moveTaskToBacklog(@NonNull Task task, @NonNull KanbanBoard kanbanBoard){
-        if(!this.tasks.contains(task))
-            throw new IllegalArgumentException("Task should be assigned to this project");
+        if(!this.possesses(task))
+            throw new IllegalArgumentException("Task should be possessed by this project");
 
-        if(!this.kanbanBoards.contains(kanbanBoard))
-            throw new IllegalArgumentException("Kanban board should be assigned to this project");
-
-        if(!kanbanBoard.isUsable())
-            throw new IllegalArgumentException("Kanban board is not usable because the sprint is over");
+        if(!this.possesses(kanbanBoard))
+            throw new IllegalArgumentException("Kanban board should be possessed by this project");
 
         kanbanBoard.remove(task);
     }
 
-    public void moveTaskOnKanbanBoard(@NonNull Task task, @NonNull KanbanBoard kanbanBoard, @NonNull TaskStatus newState){
-        if(!this.tasks.contains(task))
-            throw new IllegalArgumentException("Task should be assigned to this project");
-
-        if(!this.kanbanBoards.contains(kanbanBoard))
-            throw new IllegalArgumentException("Kanban board should be assigned to this project");
-
-        if(!kanbanBoard.isUsable())
-            throw new IllegalArgumentException("Kanban board is not usable because the sprint is over");
-
-        if(!kanbanBoard.contains(task))
-            throw new IllegalArgumentException("Task should be assigned to the given kanban board");
-
-        task.changeStatus(newState);
-    }
-
     public void delete(@NonNull KanbanBoard kanbanBoard){
-        if(!this.kanbanBoards.contains(kanbanBoard))
-            throw new IllegalArgumentException("The given kanban board doesn't belong to this project");
+        if(!this.possesses(kanbanBoard))
+            throw new IllegalArgumentException("The given kanban board isn't possessed by this project");
 
         this.kanbanBoards.remove(kanbanBoard);
     }
 
-    public List<Task> getBacklog(){
-        return this.tasks.stream().filter(task -> task.getAssignedKanbanBoard() == null).toList();
-    }
-
-    public List<Task> getTasksOnKanbanBoard(@NonNull KanbanBoard kanbanBoard){
-        return this.tasks.stream().filter(task -> task.getAssignedKanbanBoard() == kanbanBoard).toList();
-    }
-
     public void create(@NonNull Task task){
-        if(!task.belongsTo(this))
-            throw new IllegalArgumentException("Task should be assigned to this project");
+        if(!this.possesses(task))
+            throw new IllegalArgumentException("Task should be possessed by this project");
 
         this.tasks.add(task);
     }
 
+    public List<Task> getTasksInBacklog(){
+        return this.tasks.stream().filter(task -> task.isInBacklog()).toList();
+    }
+
+    public List<Task> getTasksOnKanbanBoard(@NonNull KanbanBoard kanbanBoard){
+        if(!this.possesses(kanbanBoard))
+            throw new IllegalArgumentException("Kanban board should be possessed by this project");
+
+        return this.tasks.stream().filter(task -> !task.isInBacklog()).toList();
+    }
+
     public void delete(@NonNull Task task){
-        if(!this.tasks.contains(task))
-            throw new IllegalArgumentException("The given task doesn't belong to this project");
+        if(!this.possesses(task))
+            throw new IllegalArgumentException("The given task isn't possessed by this project");
+
+        if(task.isOnKanbanBoard() && !task.getAssignedKanbanBoard().isUsable())
+            throw new IllegalArgumentException("The given task is on an uneditable kanban board. Therefore you can not delete this task");
 
         this.tasks.remove(task);
     }
@@ -192,14 +212,12 @@ public class Project {
         if(this.isTeamMember(teamMember))
             throw new IllegalArgumentException("User is already a member of this project");
 
-        List<Message> invitationsToUser = this.sentMessages.stream()
-                .filter(message -> message.hasType(MessageType.INVITATION) && message.isFor(teamMember))
-                .sorted((m1, m2) -> m2.getDispatch().compareTo(m1.getDispatch())).collect(Collectors.toList());
+        List<Message> invitationsToUser = this.getInvitationsFor(teamMember);
 
         if(invitationsToUser.isEmpty())
             throw new IllegalArgumentException("No invitation found for user");
 
-        if(!projectSecurityKey.equals(this.key.getValue()))
+        if(!this.key.equals(projectSecurityKey))
             throw new IllegalArgumentException("Incorrect Security Key passed");
 
         JSONObject latestInvitationContent = invitationsToUser.get(0).getContentAsJson();
@@ -213,23 +231,19 @@ public class Project {
                 .forEach(user -> this.send(MessageFactory.createNewProjectMemberMessage(this, user, membership)));
     }
 
-    public void kick(@NonNull User teamMember, @NonNull User admin){
-        if(!this.isAdmin(admin))
-            throw new IllegalArgumentException("Unauthorized action: Given user is not an admin of this project");
-
-        if(!this.isTeamMember(teamMember))
-            throw new IllegalArgumentException("User is not a member of this project");
-
-        ProjectMembership membership = this.getMembershipOf(teamMember);
-        this.memberships.remove(membership);
-        this.send(MessageFactory.createKickedFromProjectMessage(this, teamMember));
-
+    public Map<User, ProjectRole> getTeamMembersWithRoles(){
+        return this.memberships.stream().collect(Collectors.toMap(ProjectMembership::getUser, ProjectMembership::getRole));
     }
 
-    public void promote(@NonNull User teamMember, @NonNull User admin){
-        if(!this.isAdmin(admin))
-            throw new IllegalArgumentException("Unauthorized action: Given user is not an admin of this project");
+    public List<User> getAdmins(){
+        return this.memberships.stream().filter(membership -> membership.isAdmin()).map(ProjectMembership::getUser).toList();
+    }
 
+    public List<User> getMembers(){
+        return this.memberships.stream().filter(membership -> !membership.isAdmin()).map(ProjectMembership::getUser).toList();
+    }
+
+    public void promote(@NonNull User teamMember){
         if(!this.isTeamMember(teamMember))
             throw new IllegalArgumentException("User is not a member of this project");
 
@@ -240,10 +254,16 @@ public class Project {
                 .forEach(user -> this.send(MessageFactory.createProjectMemberRoleChangeMessage(user, membership, ProjectRole.ADMIN)));
     }
 
-    public void invite(@NonNull User user, @NonNull ProjectRole role, @NonNull User admin){
-        if(!this.isAdmin(admin))
-            throw new IllegalArgumentException("Unauthorized action: Given user is not an admin of this project");
+    public void kick(@NonNull User teamMember){
+        if(!this.isTeamMember(teamMember))
+            throw new IllegalArgumentException("User is not a member of this project");
 
+        this.remove(teamMember);
+        this.send(MessageFactory.createKickedFromProjectMessage(this, teamMember));
+
+    }
+
+    public void invite(@NonNull User user, @NonNull ProjectRole role){
         if(this.isTeamMember(user))
             throw new IllegalArgumentException("User is already a member of this project");
 
@@ -251,11 +271,23 @@ public class Project {
         this.send(invitation);
     }
 
-    public void revoke(@NonNull Message invitation, @NonNull User admin){
-        if(!this.isAdmin(admin))
-            throw new IllegalArgumentException("Unauthorized action: Given user is not an admin of this project");
+    public List<Message> getInvitations(){
+        return this.sentMessages.stream().filter(message -> message.hasType(MessageType.INVITATION))
+                .sorted((m1, m2) -> m2.getDispatch().compareTo(m1.getDispatch())).toList();
+    }
 
-        if(!this.sentMessages.contains(invitation))
+    public List<Message> getInvitationsFor(@NonNull User user){
+        return this.sentMessages.stream().filter(message -> message.hasType(MessageType.INVITATION) && message.isFor(user))
+                .sorted((m1, m2) -> m2.getDispatch().compareTo(m1.getDispatch())).toList();
+    }
+
+    public List<Message> getMessagesFor(@NonNull User user){
+        return this.sentMessages.stream().filter(message -> message.isFor(user))
+                .sorted((m1, m2) -> m2.getDispatch().compareTo(m1.getDispatch())).toList();
+    }
+
+    public void revoke(@NonNull Message invitation){
+        if(!this.sent(invitation))
             throw new IllegalArgumentException("The given message was not sent by this project");
 
         if(!invitation.hasType(MessageType.INVITATION))

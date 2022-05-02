@@ -57,20 +57,19 @@ public class KanbanBoard {
     @JsonIgnore
     private Set<Task> assignedTasks = new HashSet<>();
 
-    public KanbanBoard migrate(@NonNull Sprint newSprint) {
-        return new KanbanBoard(this.name, this.description, newSprint, this.showReviewColumn, this.showTestingColumn, this.project, this.assignedTasks);
-    }
-
-    public boolean belongsTo(@NonNull Project project) {
-        return this.project.equals(project);
-    }
-
-    public boolean contains(@NonNull Task task) {
+    private boolean contains(@NonNull Task task) {
         return assignedTasks.contains(task);
     }
 
-    public boolean isUsable(){
+    private boolean isUsable(){
         return this.sprint.isOver();
+    }
+
+    public KanbanBoard migrate(@NonNull Sprint newSprint) {
+        if(this.isUsable())
+            throw new IllegalArgumentException("Kanban board is still usable and can therefore not be migrated. Consider extending the sprint instead");
+
+        return new KanbanBoard(this.name, this.description, newSprint, this.showReviewColumn, this.showTestingColumn, this.project, this.assignedTasks);
     }
 
     public void rename(@NonNull String newName) {
@@ -85,35 +84,14 @@ public class KanbanBoard {
         this.sprint = new Sprint(this.sprint.getStartOfSprint(), endOfSprint);
     }
 
-    public void extendSprint(@NonNull int duration) {
+    public void extendSprint(@NonNull int seconds) {
         long remaining_duration = Duration.between(this.sprint.getEndOfSprint().toInstant(), Timestamp.valueOf(LocalDateTime.now()).toInstant()).toSeconds();
-        this.sprint = new Sprint(this.sprint.getStartOfSprint(), Duration.ofSeconds(remaining_duration + duration));
+        this.sprint = new Sprint(this.sprint.getStartOfSprint(), Duration.ofSeconds(remaining_duration + seconds));
     }
 
-    public void assign(@NonNull Task task) {
-        if(!this.isUsable())
-            throw new IllegalStateException("Kanban board is editable after the sprint is over");
-
-        if(!this.project.equals(task.getProject()))
-            throw new IllegalArgumentException("Task and kanban board are not part of the same project");
-
-        if(this.contains(task))
-            throw new IllegalArgumentException("Task is already assigned to this kanban board");
-
-        this.assignedTasks.add(task);
-    }
-
-    public void remove(@NonNull Task task) {
-        if(!this.isUsable())
-            throw new IllegalStateException("Kanban board is editable after the sprint is over");
-
-        if(!this.project.equals(task.getProject()))
-            throw new IllegalArgumentException("Task and kanban board are not part of the same project");
-
-        if(!this.contains(task))
-            throw new IllegalArgumentException("Task is not assigned to this kanban board");
-
-        this.assignedTasks.remove(task);
+    public void extendSprint(@NonNull Duration duration) {
+        long remaining_duration = Duration.between(this.sprint.getEndOfSprint().toInstant(), Timestamp.valueOf(LocalDateTime.now()).toInstant()).toSeconds();
+        this.sprint = new Sprint(this.sprint.getStartOfSprint(), Duration.ofSeconds(remaining_duration + duration.getSeconds()));
     }
 
     public void showReviewColumn(){
@@ -132,13 +110,81 @@ public class KanbanBoard {
         this.showTestingColumn = false;
     }
 
-    public Map<TaskStatus, Integer> getTasksPerState(){
+    public void assign(@NonNull Task task) {
+        if(!this.isUsable())
+            throw new IllegalStateException("Kanban board is editable after the sprint is over");
+
+        if(this.contains(task))
+            throw new IllegalArgumentException("Task is already assigned to this kanban board");
+
+        this.assignedTasks.add(task);
+    }
+
+    public Map<TaskStatus, List<Task>> getAssignedTasksPerStatus() {
+        Map<TaskStatus, List<Task>> tasksPerStatus = new HashMap<>();
+        for(TaskStatus status : TaskStatus.values())
+            tasksPerStatus.put(status, new ArrayList<>());
+
+        for(Task task : this.assignedTasks)
+            tasksPerStatus.get(task.getStatus()).add(task);
+
+        return tasksPerStatus;
+    }
+
+    public List<Task> getTasksInTodo() {
+        return this.assignedTasks.stream().filter(task -> task.hasStatus(TaskStatus.TODO)).toList();
+    }
+
+    public List<Task> getTasksInProgress() {
+        return this.assignedTasks.stream().filter(task -> task.hasStatus(TaskStatus.IN_PROGRESS)).toList();
+    }
+
+    public List<Task> getTasksInReview() {
+        if(!this.showReviewColumn)
+            return List.of();
+
+        return this.assignedTasks.stream().filter(task -> task.hasStatus(TaskStatus.REVIEW)).toList();
+    }
+
+    public List<Task> getTasksInTesting() {
+        if(!this.showTestingColumn)
+            return List.of();
+
+        return this.assignedTasks.stream().filter(task -> task.hasStatus(TaskStatus.TESTING)).toList();
+    }
+
+    public List<Task> getTasksInDone() {
+        return this.assignedTasks.stream().filter(Task::completed).toList();
+    }
+
+    public void move(@NonNull Task task, @NonNull TaskStatus newState) {
+        if(!this.isUsable())
+            throw new IllegalArgumentException("Kanban board is not usable because the sprint is over");
+
+        if(!this.contains(task))
+            throw new IllegalArgumentException("Task should be assigned to this kanban board");
+
+        task.changeStatus(newState);
+    }
+
+    public void remove(@NonNull Task task) {
+        if(!this.isUsable())
+            throw new IllegalStateException("Kanban board is editable after the sprint is over");
+
+        if(!this.contains(task))
+            throw new IllegalArgumentException("Task is not assigned to this kanban board");
+
+        this.assignedTasks.remove(task);
+    }
+
+    public Map<TaskStatus, Integer> getNumberOfTasksPerState(){
         Map<TaskStatus, Integer> tasksPerState = new HashMap<>();
         for(TaskStatus state : TaskStatus.values()){
             tasksPerState.put(state, 0);
         }
         for (Task task : this.assignedTasks){
-            tasksPerState.put(task.getStatus(), tasksPerState.get(task.getStatus()) + 1);
+            int numTasksOfState =  tasksPerState.get(task.getStatus());
+            tasksPerState.put(task.getStatus(), numTasksOfState + 1);
         }
         return tasksPerState;
     }

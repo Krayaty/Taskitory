@@ -49,9 +49,18 @@ public final class ProjectSecurityKey {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        ProjectSecurityKey that = (ProjectSecurityKey) o;
-        return Objects.equals(value, that.value);
+        if (o == null)
+            return false;
+
+        if (getClass() == o.getClass()){
+            ProjectSecurityKey that = (ProjectSecurityKey) o;
+            return Objects.equals(value, that.value);
+
+        } else if(o instanceof String){
+            return Objects.equals(this.getValue(), o);
+        }
+
+        return false;
     }
 
     @Override

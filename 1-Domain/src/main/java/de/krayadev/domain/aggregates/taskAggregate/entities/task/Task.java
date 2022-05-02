@@ -78,8 +78,12 @@ public class Task {
     )
     private Set<Tag> assignedTags = new HashSet<>();
 
-    public boolean belongsTo(@NonNull Project project) {
-        return this.project.equals(project);
+    public boolean isInBacklog() {
+        return this.assignedKanbanBoard == null;
+    }
+
+    public boolean isOnKanbanBoard() {
+        return !this.isInBacklog();
     }
 
     public boolean isResponsible(User user){
@@ -142,6 +146,10 @@ public class Task {
             throw new IllegalArgumentException("Task is not assigned to this tag");
 
         this.assignedTags.remove(tag);
+    }
+
+    public boolean hasStatus(@NonNull TaskStatus status){
+        return this.status == status;
     }
 
 }
