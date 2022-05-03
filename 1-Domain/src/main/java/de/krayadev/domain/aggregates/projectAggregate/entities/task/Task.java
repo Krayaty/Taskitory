@@ -1,9 +1,11 @@
-package de.krayadev.domain.aggregates.taskAggregate.entities.task;
+package de.krayadev.domain.aggregates.projectAggregate.entities.task;
 
 import de.krayadev.domain.aggregates.userAggregate.entities.user.User;
-import de.krayadev.domain.aggregates.taskAggregate.valueObjects.Complexity;
-import de.krayadev.domain.aggregates.taskAggregate.valueObjects.Priority;
-import de.krayadev.domain.aggregates.taskAggregate.valueObjects.TaskLifecycle;
+import de.krayadev.domain.aggregates.projectAggregate.valueObjects.Complexity;
+import de.krayadev.domain.aggregates.projectAggregate.valueObjects.Priority;
+import de.krayadev.domain.aggregates.projectAggregate.valueObjects.TaskLifecycle;
+import de.krayadev.domain.valueObjects.Description;
+import de.krayadev.domain.valueObjects.Name;
 import lombok.*;
 import de.krayadev.domain.aggregates.projectAggregate.entities.kanbanBoard.KanbanBoard;
 import de.krayadev.domain.aggregates.userAggregate.entities.tag.Tag;
@@ -16,7 +18,8 @@ import java.util.Set;
 import java.util.UUID;
 
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@ToString
 @Getter
 @Entity
 @Table(name = "task",
@@ -30,10 +33,17 @@ public class Task {
     private final UUID id = UUID.randomUUID();
 
     @Column(length = 100, nullable = false)
-    private String name;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(length = 100, nullable = false))
+    })
+    private Name name;
 
-    @Column(length = 500)
-    private String description;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(length = 500))
+    })
+    private Description description;
 
     @Embedded
     @AttributeOverrides({ @AttributeOverride(name = "value", column = @Column(name = "complexity", length = 2)) })
@@ -87,6 +97,10 @@ public class Task {
         return this.lifecycle.getStatus();
     }
 
+    public boolean hasStatus(@NonNull TaskStatus status){
+        return this.lifecycle.inStatus(status);
+    }
+
     public boolean isResponsible(User user){
         return this.responsibleUser == user;
     }
@@ -95,22 +109,16 @@ public class Task {
         return this.lifecycle.getProcessingDuration();
     }
 
-    public boolean completed() {
+    public boolean isCompleted() {
         return this.lifecycle.isCompleted();
     }
 
-    private boolean isAssignedTo(KanbanBoard kanbanBoard){
-        return this.assignedKanbanBoard.equals(kanbanBoard);
-    }
-
     public void changeName(@NonNull String newName) {
-        this.name = newName;
+        this.name = new Name(newName);
     }
 
     public void changeDescription(String newDescription) {
-        this.description = "";
-        if (newDescription != null)
-            this.description = newDescription;
+        this.description = new Description(newDescription);
     }
 
     public void changeComplexity(@NonNull int complexity) {
@@ -123,28 +131,6 @@ public class Task {
 
     public void changeStatus(@NonNull TaskStatus newStatus) {
         this.lifecycle.change(newStatus);
-    }
-
-    public void moveToBacklog() {
-        this.assignedKanbanBoard = null;
-    }
-
-    public void assign(@NonNull Tag tag){
-        if(this.assignedTags.contains(tag))
-            throw new IllegalArgumentException("Task is already assigned to this tag");
-
-        this.assignedTags.add(tag);
-    }
-
-    public void unassign(Tag tag){
-        if(!this.assignedTags.contains(tag))
-            throw new IllegalArgumentException("Task is not assigned to this tag");
-
-        this.assignedTags.remove(tag);
-    }
-
-    public boolean hasStatus(@NonNull TaskStatus status){
-        return this.lifecycle.inStatus(status);
     }
 
 }

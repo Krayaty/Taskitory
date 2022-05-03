@@ -1,4 +1,4 @@
-package de.krayadev.domain.aggregates.taskAggregate.entities.task;
+package de.krayadev.domain.aggregates.projectAggregate.entities.task;
 
 import lombok.Getter;
 

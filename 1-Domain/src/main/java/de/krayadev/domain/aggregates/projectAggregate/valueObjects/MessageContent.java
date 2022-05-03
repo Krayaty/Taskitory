@@ -8,7 +8,6 @@ import java.util.Objects;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Embeddable
-@ToString
 @Getter
 public final class MessageContent {
 
@@ -29,5 +28,10 @@ public final class MessageContent {
     @Override
     public int hashCode() {
         return Objects.hash(content);
+    }
+
+    @Override
+    public String toString() {
+        return this.content;
     }
 }

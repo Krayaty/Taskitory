@@ -1,6 +1,6 @@
-package de.krayadev.domain.aggregates.taskAggregate.valueObjects;
+package de.krayadev.domain.aggregates.projectAggregate.valueObjects;
 
-import de.krayadev.domain.aggregates.taskAggregate.entities.task.TaskStatus;
+import de.krayadev.domain.aggregates.projectAggregate.entities.task.TaskStatus;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;

@@ -1,7 +1,6 @@
-package de.krayadev.domain.aggregates.taskAggregate.valueObjects;
+package de.krayadev.domain.aggregates.projectAggregate.valueObjects;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.ToString;
 
@@ -10,7 +9,6 @@ import java.util.Objects;
 
 @Embeddable
 @Getter
-@ToString
 public final class Priority {
 
     public static final Priority NONE = new Priority();
@@ -39,5 +37,10 @@ public final class Priority {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(this.value);
     }
 }

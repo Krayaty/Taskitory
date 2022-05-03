@@ -1,7 +1,9 @@
 package de.krayadev.domain.aggregates.userAggregate.entities.tag;
 
-import de.krayadev.domain.aggregates.taskAggregate.entities.task.Task;
+import de.krayadev.domain.aggregates.projectAggregate.entities.task.Task;
 import de.krayadev.domain.aggregates.userAggregate.entities.user.User;
+import de.krayadev.domain.valueObjects.Description;
+import de.krayadev.domain.valueObjects.Name;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,22 +13,23 @@ import java.util.Set;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
-@NoArgsConstructor
 @ToString(exclude = {"assignedTo"})
 @EqualsAndHashCode(of = {"name"})
 @Getter
-@Setter
 @Entity
 @Table(name = "tag", schema = "backend")
 public class Tag {
 
     @Id
-    @Column(length = 50, nullable = false, updatable = false)
+    @Column(length = 100, nullable = false, updatable = false)
     @NonNull
     private String name;
 
-    @Column(length = 500)
-    private String description;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(length = 500))
+    })
+    private Description description;
 
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "creator", referencedColumnName = "id", nullable = false, updatable = false)
@@ -42,14 +45,29 @@ public class Tag {
     @NonNull
     private Set<Task> assignedTo = new HashSet<>();
 
-    public void changeDescription(String newDescription) {
-        this.description = "";
-        if (newDescription != null)
-            this.description = newDescription;
+    protected Tag() {
+        Name name = new Name();
+        this.name = name.getValue();
+        this.description = new Description();
+        this.creator = null;
     }
 
-    public boolean isCreator(User creator) {
-        return this.creator.equals(creator);
+    public void changeDescription(String newDescription) {
+        this.description = new Description(newDescription);
+    }
+
+    public void assignTo(@NonNull Task task) {
+        if(this.assignedTo.contains(task))
+           throw new IllegalArgumentException("Tag is already assigned to the given task");
+
+        this.assignedTo.add(task);
+    }
+
+    public void unassignFrom(@NonNull Task task) {
+        if(!this.assignedTo.contains(task))
+            throw new IllegalArgumentException("Tag is not assigned to the given task");
+
+        this.assignedTo.remove(task);
     }
 
 }

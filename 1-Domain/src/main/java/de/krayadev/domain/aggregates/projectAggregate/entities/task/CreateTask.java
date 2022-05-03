@@ -1,10 +1,12 @@
-package de.krayadev.domain.aggregates.taskAggregate.entities.task;
+package de.krayadev.domain.aggregates.projectAggregate.entities.task;
 
 import de.krayadev.domain.aggregates.userAggregate.entities.user.User;
 import de.krayadev.domain.aggregates.projectAggregate.entities.kanbanBoard.KanbanBoard;
-import de.krayadev.domain.aggregates.taskAggregate.valueObjects.Complexity;
-import de.krayadev.domain.aggregates.taskAggregate.valueObjects.Priority;
-import de.krayadev.domain.aggregates.taskAggregate.valueObjects.TaskLifecycle;
+import de.krayadev.domain.aggregates.projectAggregate.valueObjects.Complexity;
+import de.krayadev.domain.aggregates.projectAggregate.valueObjects.Priority;
+import de.krayadev.domain.aggregates.projectAggregate.valueObjects.TaskLifecycle;
+import de.krayadev.domain.valueObjects.Description;
+import de.krayadev.domain.valueObjects.Name;
 import lombok.NonNull;
 import org.apache.commons.lang3.builder.Builder;
 import de.krayadev.domain.aggregates.projectAggregate.entities.project.Project;
@@ -16,15 +18,15 @@ import java.util.Set;
 
 public class CreateTask {
 
-    private String name;
+    private Name name;
 
-    private String description;
+    private Description description;
 
     private Complexity complexity;
 
     private Priority priority;
 
-    private TaskLifecycle lifeTime;
+    private TaskLifecycle lifecycle;
 
     private TaskStatus status;
 
@@ -39,10 +41,9 @@ public class CreateTask {
     private Set<Tag> assignedTags;
 
     public CreateTask(String name) {
-        this.name = name;
-        this.description = "";
-        this.lifeTime = new TaskLifecycle();
-        this.status = TaskStatus.TODO;
+        this.name = new Name(name);
+        this.description = new Description();
+        this.lifecycle = new TaskLifecycle();
         this.complexity = Complexity.NONE;
         this.priority = Priority.NONE;
         this.responsibleUser = null;
@@ -61,7 +62,7 @@ public class CreateTask {
     }
 
     private Task build() {
-        return new Task(name, description, complexity, priority, lifeTime, status, project, responsibleUser, creator, kanbanBoard, assignedTags);
+        return new Task(name, description, complexity, priority, lifecycle, project, responsibleUser, creator, kanbanBoard, assignedTags);
     }
 
     class CreatableTask implements Builder<Task> {
@@ -72,7 +73,7 @@ public class CreateTask {
         }
 
         public CreatableTask withDescription(@NonNull String description) {
-            CreateTask.this.description = description;
+            CreateTask.this.description = new Description(description);
             return this;
         }
 
@@ -83,11 +84,6 @@ public class CreateTask {
 
         public CreatableTask withPriority(@NonNull int priority) {
             CreateTask.this.priority = new Priority(priority);
-            return this;
-        }
-
-        public CreatableTask withStatus(@NonNull TaskStatus status) {
-            CreateTask.this.status = status;
             return this;
         }
 

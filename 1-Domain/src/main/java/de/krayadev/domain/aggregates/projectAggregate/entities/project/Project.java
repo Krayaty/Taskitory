@@ -3,15 +3,17 @@ package de.krayadev.domain.aggregates.projectAggregate.entities.project;
 import de.krayadev.domain.aggregates.projectAggregate.entities.kanbanBoard.KanbanBoard;
 import de.krayadev.domain.aggregates.projectAggregate.entities.projectMembership.ProjectRole;
 import de.krayadev.domain.aggregates.projectAggregate.valueObjects.Sprint;
-import de.krayadev.domain.aggregates.taskAggregate.entities.task.Task;
+import de.krayadev.domain.aggregates.projectAggregate.entities.task.Task;
 import de.krayadev.domain.aggregates.projectAggregate.entities.message.Message;
 import de.krayadev.domain.aggregates.projectAggregate.entities.message.MessageFactory;
 import de.krayadev.domain.aggregates.projectAggregate.entities.message.MessageType;
 import de.krayadev.domain.aggregates.projectAggregate.entities.projectMembership.ProjectMembership;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.krayadev.domain.aggregates.projectAggregate.valueObjects.ProjectSecurityKey;
-import de.krayadev.domain.aggregates.taskAggregate.entities.task.TaskStatus;
+import de.krayadev.domain.aggregates.projectAggregate.entities.task.TaskStatus;
 import de.krayadev.domain.aggregates.userAggregate.entities.user.User;
+import de.krayadev.domain.valueObjects.Description;
+import de.krayadev.domain.valueObjects.Name;
 import lombok.*;
 import org.json.JSONObject;
 
@@ -25,7 +27,6 @@ import java.util.stream.Collectors;
 @ToString(exclude = {"sentMessages", "tags", "kanbanBoards"})
 @EqualsAndHashCode(of = {"name"})
 @Getter
-@Setter
 @Entity
 @Table(name = "project", schema = "backend")
 public class Project {
@@ -34,8 +35,12 @@ public class Project {
     @Column(length = 100, nullable = false, updatable = false)
     private String name;
 
-    @Column(length = 1000)
-    private String description;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(length = 500))
+    })
+    private Description description;
 
     @Embedded
     @AttributeOverrides({ @AttributeOverride(name = "value", column = @Column(name = "key", length = 128, columnDefinition = "bpchar(128)", unique = true, updatable = false, nullable = false)) })
@@ -59,14 +64,12 @@ public class Project {
 
     public Project(@NonNull String name) {
         this.name = name;
-        this.description = "";
+        this.description = new Description();
     }
 
     public Project(@NonNull String name, String description) {
         this.name = name;
-        this.description = "";
-        if(description != null)
-            this.description = description;
+        this.description = new Description(description);
     }
 
     private ProjectMembership getMembershipOf(@NonNull User user){
@@ -107,9 +110,7 @@ public class Project {
     }
 
     public void changeDescription(String newDescription) {
-        this.description = "";
-        if(newDescription != null)
-            this.description = newDescription;
+        this.description = new Description(newDescription);
     }
 
     public void changeSecurityKey(){
@@ -187,11 +188,11 @@ public class Project {
         return this.tasks.stream().filter(task -> task.isInBacklog()).toList();
     }
 
-    public List<Task> getTasksOnKanbanBoard(@NonNull KanbanBoard kanbanBoard){
+    public Map<TaskStatus, List<Task>> getTasksOnKanbanBoard(@NonNull KanbanBoard kanbanBoard){
         if(!this.possesses(kanbanBoard))
             throw new IllegalArgumentException("Kanban board should be possessed by this project");
 
-        return this.tasks.stream().filter(task -> !task.isInBacklog()).toList();
+        return kanbanBoard.getAssignedTasksPerStatus();
     }
 
     public void delete(@NonNull Task task){

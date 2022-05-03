@@ -57,4 +57,8 @@ public class ProjectMembership {
         return this.role == ProjectRole.ADMIN;
     }
 
+    public boolean in(Project project) {
+        return this.project.equals(project);
+    }
+
 }

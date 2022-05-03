@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.krayadev.domain.aggregates.projectAggregate.entities.message.MessageContentJSONKey;
 import de.krayadev.domain.aggregates.projectAggregate.entities.message.MessageType;
 import de.krayadev.domain.aggregates.projectAggregate.entities.project.Project;
-import de.krayadev.domain.aggregates.taskAggregate.entities.task.Task;
+import de.krayadev.domain.aggregates.projectAggregate.entities.task.Task;
 import de.krayadev.domain.aggregates.projectAggregate.entities.message.Message;
 import de.krayadev.domain.aggregates.projectAggregate.entities.projectMembership.ProjectMembership;
 import de.krayadev.domain.aggregates.userAggregate.entities.tag.Tag;
@@ -13,14 +13,17 @@ import lombok.*;
 import org.json.JSONObject;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static de.krayadev.domain.services.RessourceAccessService.hasAccess;
+
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString(of = {"username"})
+@ToString(of = {"id","username"})
 @EqualsAndHashCode(of = {"username"})
 @Getter
 @Entity
@@ -60,29 +63,22 @@ public class User {
     @JsonIgnore
     private Set<Tag> createdTags = new HashSet<>();
 
-    public boolean isProjectMember(@NonNull Project project){
-        ProjectMembership projectMembership = this.memberships.stream().filter(membership -> membership.getProject().equals(project)).findFirst().orElse(null);
-        return projectMembership != null;
-    }
-
-    private boolean hasAccessTo(@NonNull Task task){
-        return this.isProjectMember(task.getProject());
-    }
-
-    private void removeMembership(@NonNull ProjectMembership membership){
-        memberships.remove(membership);
-    }
-
     public void takeResponsibilityFor(@NonNull Task task){
-        if(!this.hasAccessTo(task))
+        if(!hasAccess(this, task))
             throw new IllegalStateException("User can not access task because he is not a member of the project");
+
+        if(this.assignedTasks.contains(task))
+            throw new IllegalStateException("User is already responsible for given task");
 
         this.assignedTasks.add(task);
     }
 
     public void giveUpResponsibilityFor(@NonNull Task task){
-        if(!this.hasAccessTo(task))
+        if(!hasAccess(this, task))
             throw new IllegalStateException("User can not access task because he is not a member of the project");
+
+        if(!this.assignedTasks.contains(task))
+            throw new IllegalStateException("User is not responsible for this task");
 
         this.assignedTasks.remove(task);
     }
@@ -98,69 +94,75 @@ public class User {
     }
 
     public void leave(@NonNull Project project){
-        memberships.stream().filter(membership -> membership.getProject().equals(project)).findFirst().ifPresentOrElse(
-                this::removeMembership, () -> {
-                    throw new IllegalStateException("User is not a member of the project");
-                });
+        if(!hasAccess(this, project))
+            throw new IllegalStateException("User is not a member of the given project");
+
+        List<ProjectMembership> projectMemberships = this.memberships.stream().filter(membership -> membership.getProject().equals(project)).toList();
+        this.memberships.removeAll(projectMemberships);
     }
 
     public void create(@NonNull Tag tag){
-        if(!tag.isCreator(this))
+        if(!this.createdTags.contains(tag))
             throw new IllegalStateException("User has to be assigned as creator for given tag");
 
         this.createdTags.add(tag);
     }
 
     public void assignTagToTask(@NonNull Tag tag, @NonNull Task task){
-        if(!this.hasAccessTo(task))
+        if(!hasAccess(this, task))
             throw new IllegalStateException("User can not access task because he is not a member of the project");
 
-        task.assign(tag);
+        tag.assignTo(task);
     }
 
     public void unassignTagFromTask(@NonNull Tag tag, @NonNull Task task){
-        if(!this.hasAccessTo(task))
+        if(!hasAccess(this, task))
             throw new IllegalStateException("User can not access task because he is not a member of the project");
 
-        task.unassign(tag);
+        tag.unassignFrom(task);
     }
 
     public void delete(@NonNull Tag tag){
-        if(!tag.isCreator(this))
+        if(!this.createdTags.contains(tag))
             throw new IllegalStateException("Tags can only be deleted by their creator");
 
         this.createdTags.remove(tag);
     }
 
-    public void receiveMessage(@NonNull Message message){
-        if(!message.isFor(this))
-            throw new IllegalArgumentException("Message is not for this user");
-
-        receivedMessages.add(message);
-    }
-
     public List<Message> retrieveAllMessages(){
-        return this.receivedMessages.stream().toList();
+        List<Message> allMessages = new ArrayList<>();
+
+        for(Message message : this.receivedMessages){
+            message.markAsRead();
+            allMessages.add(message);
+        }
+
+        return allMessages;
     }
 
     public List<Message> retrieveUnreadMessages(){
-        return this.receivedMessages.stream().filter(message -> !message.isRead()).toList();
+        List<Message> unreadMessages =  this.receivedMessages.stream().filter(message -> !message.isRead()).toList();
+
+        for(Message message : unreadMessages)
+            message.markAsRead();
+
+        return unreadMessages;
     }
 
     public List<Message> retrieveMessagesOfType(@NonNull MessageType type){
-        return this.receivedMessages.stream().filter(message -> message.hasType(type)).toList();
+        List<Message> messagesOfType = this.receivedMessages.stream().filter(message -> message.hasType(type)).toList();
+
+        for(Message message : messagesOfType)
+            message.markAsRead();
+
+        return messagesOfType;
     }
 
     public void deleteMessage(@NonNull Message message){
-        receivedMessages.remove(message);
-    }
+        if(!this.receivedMessages.contains(message))
+            throw new IllegalStateException("User is not the recipient of this message");
 
-    private Message readMessage(@NonNull Message message){
-        if(!message.isFor(this))
-            throw new IllegalArgumentException("Message is not for this user");
-
-        message.markAsRead();
-        return message;
+        this.receivedMessages.remove(message);
     }
 
 }

@@ -1,7 +1,9 @@
 package de.krayadev.domain.aggregates.projectAggregate.entities.kanbanBoard;
 
 import de.krayadev.domain.aggregates.projectAggregate.valueObjects.Sprint;
-import de.krayadev.domain.aggregates.taskAggregate.entities.task.Task;
+import de.krayadev.domain.aggregates.projectAggregate.entities.task.Task;
+import de.krayadev.domain.valueObjects.Description;
+import de.krayadev.domain.valueObjects.Name;
 import lombok.NonNull;
 import org.apache.commons.lang3.builder.Builder;
 import de.krayadev.domain.aggregates.projectAggregate.entities.project.Project;
@@ -12,9 +14,9 @@ import java.util.Set;
 
 public class CreateKanbanBoard  {
 
-    private String name;
+    private Name name;
 
-    private String description;
+    private Description description;
 
     private Sprint sprint;
 
@@ -27,8 +29,8 @@ public class CreateKanbanBoard  {
     private Set<Task> assignedTasks;
 
     private CreateKanbanBoard(@NonNull String name) {
-        this.name = name;
-        this.description = "";
+        this.name = new Name(name);
+        this.description = new Description();
         this.showReviewColumn = false;
         this.showTestingColumn = false;
         this.assignedTasks = new HashSet<>();
@@ -56,7 +58,7 @@ public class CreateKanbanBoard  {
         }
 
         public CreatableKanbanBoard withDescription(@NonNull String description) {
-            CreateKanbanBoard.this.description = description;
+            CreateKanbanBoard.this.description = new Description(description);
             return this;
         }
 

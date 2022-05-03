@@ -1,9 +1,11 @@
 package de.krayadev.domain.aggregates.projectAggregate.entities.kanbanBoard;
 
 import de.krayadev.domain.aggregates.projectAggregate.valueObjects.Sprint;
-import de.krayadev.domain.aggregates.taskAggregate.entities.task.Task;
+import de.krayadev.domain.aggregates.projectAggregate.entities.task.Task;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import de.krayadev.domain.aggregates.taskAggregate.entities.task.TaskStatus;
+import de.krayadev.domain.aggregates.projectAggregate.entities.task.TaskStatus;
+import de.krayadev.domain.valueObjects.Description;
+import de.krayadev.domain.valueObjects.Name;
 import lombok.*;
 import de.krayadev.domain.aggregates.projectAggregate.entities.project.Project;
 
@@ -18,7 +20,6 @@ import java.util.*;
 @ToString(exclude = {"assignedTasks"})
 @EqualsAndHashCode(of = "id")
 @Getter
-@Setter
 @Entity
 @Table(name = "kanban_board",
         schema = "backend",
@@ -30,11 +31,17 @@ public class KanbanBoard {
     @Id
     private final UUID id = UUID.randomUUID();
 
-    @Column(length = 100, nullable = false)
-    private String name;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(length = 100, nullable = false))
+    })
+    private Name name;
 
-    @Column(length = 500)
-    private String description;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(length = 500))
+    })
+    private Description description;
 
     @Embedded
     @AttributeOverrides({
@@ -87,11 +94,11 @@ public class KanbanBoard {
     }
 
     public void rename(@NonNull String newName) {
-        this.name = newName;
+        this.name = new Name(newName);
     }
 
     public void changeDescription(String newDescription) {
-        this.description = newDescription;
+        this.description = new Description(newDescription);
     }
 
     public void setEndOfSprint(Timestamp endOfSprint) {
@@ -169,7 +176,7 @@ public class KanbanBoard {
     }
 
     public List<Task> getTasksInDone() {
-        return this.assignedTasks.stream().filter(Task::completed).toList();
+        return this.assignedTasks.stream().filter(Task::isCompleted).toList();
     }
 
     public void move(@NonNull Task task, @NonNull TaskStatus newState) {
@@ -217,7 +224,7 @@ public class KanbanBoard {
         int sum = 0;
         int count = 0;
         for (Task task : this.assignedTasks){
-            if(task.completed()){
+            if(task.isCompleted()){
                 sum += task.getProcessingDuration().toSeconds();
                 count++;
             }
