@@ -61,8 +61,22 @@ public class KanbanBoard {
         return assignedTasks.contains(task);
     }
 
-    private boolean isUsable(){
+    public boolean isUsable(){
         return this.sprint.isOver();
+    }
+
+    private boolean isMovable(@NonNull Task task) {
+        return isTargetable(task.getStatus());
+    }
+
+    private boolean isTargetable(@NonNull TaskStatus status) {
+        if(status == TaskStatus.REVIEW && !this.showReviewColumn)
+            return false;
+
+        if(status == TaskStatus.TESTING && !this.showTestingColumn)
+            return false;
+
+        return false;
     }
 
     public KanbanBoard migrate(@NonNull Sprint newSprint) {
@@ -126,7 +140,8 @@ public class KanbanBoard {
             tasksPerStatus.put(status, new ArrayList<>());
 
         for(Task task : this.assignedTasks)
-            tasksPerStatus.get(task.getStatus()).add(task);
+            if(this.isMovable(task))
+                tasksPerStatus.get(task.getStatus()).add(task);
 
         return tasksPerStatus;
     }
@@ -164,6 +179,12 @@ public class KanbanBoard {
         if(!this.contains(task))
             throw new IllegalArgumentException("Task should be assigned to this kanban board");
 
+        if(!this.isMovable(task))
+            throw new IllegalArgumentException("Task can not be moved from hidden column");
+
+        if(!this.isTargetable(newState))
+            throw new IllegalArgumentException("Task can not be moved to hidden column");
+
         task.changeStatus(newState);
     }
 
@@ -173,6 +194,9 @@ public class KanbanBoard {
 
         if(!this.contains(task))
             throw new IllegalArgumentException("Task is not assigned to this kanban board");
+
+        if(!this.isMovable(task))
+            throw new IllegalArgumentException("Task can not be removed from hidden column");
 
         this.assignedTasks.remove(task);
     }

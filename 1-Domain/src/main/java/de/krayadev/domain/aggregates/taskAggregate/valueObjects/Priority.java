@@ -8,16 +8,19 @@ import lombok.ToString;
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
-@NoArgsConstructor
 @Embeddable
 @Getter
 @ToString
 public final class Priority {
 
-    public static final Priority NONE = new Priority(0);
+    public static final Priority NONE = new Priority();
 
     @NonNull
-    private int value;
+    private final int value;
+
+    public Priority() {
+        this.value = 0;
+    }
 
     public Priority(@NonNull int priority) {
         if (priority < 0 || priority > 20)

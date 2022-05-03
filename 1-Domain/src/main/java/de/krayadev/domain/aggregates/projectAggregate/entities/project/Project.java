@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 public class Project {
 
     @Id
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = false, updatable = false)
     private String name;
 
     @Column(length = 1000)
@@ -104,10 +104,6 @@ public class Project {
 
     private void send(@NonNull Message message){
         this.sentMessages.add(message);
-    }
-
-    public void rename(@NonNull String newName) {
-        this.name = newName;
     }
 
     public void changeDescription(String newDescription) {

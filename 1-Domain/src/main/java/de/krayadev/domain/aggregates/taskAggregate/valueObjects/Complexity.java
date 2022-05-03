@@ -8,16 +8,19 @@ import lombok.ToString;
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
-@NoArgsConstructor
 @Embeddable
 @Getter
 @ToString
 public final class Complexity {
 
-    public static final Complexity NONE = new Complexity(0);
+    public static final Complexity NONE = new Complexity();
 
     @NonNull
-    private int value;
+    private final int value;
+
+    protected Complexity() {
+        this.value = 0;
+    }
 
     public Complexity(@NonNull int value) {
         if (value < 0 || value > 20)

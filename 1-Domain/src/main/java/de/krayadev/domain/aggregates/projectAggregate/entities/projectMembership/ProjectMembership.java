@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(of = {"de/krayadev/domain/aggregates/projectAggregate/entities/project", "de/krayadev/domain/aggregates/userAggregate/entities/user"})
 @ToString(exclude = {"id"})
 @Getter
-@Setter
 @Entity
 @Table(name = "project_membership", schema = "backend")
 public class ProjectMembership {
@@ -33,8 +32,8 @@ public class ProjectMembership {
     @NonNull
     private User user;
 
-    @Column(name = "start_of_membership", length = 6, nullable = false, updatable = false)
-    private final Timestamp startOfMembership = Timestamp.valueOf(LocalDateTime.now());
+    @Column(name = "start_of_membership", length = 6, nullable = false)
+    private Timestamp startOfMembership = Timestamp.valueOf(LocalDateTime.now());
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -50,6 +49,7 @@ public class ProjectMembership {
         if(this.isAdmin())
             throw new IllegalStateException("Cannot promote admin to admin");
 
+        this.startOfMembership = Timestamp.valueOf(LocalDateTime.now());
         this.role = ProjectRole.ADMIN;
     }
 

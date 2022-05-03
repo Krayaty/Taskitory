@@ -4,7 +4,7 @@ import de.krayadev.domain.aggregates.userAggregate.entities.user.User;
 import de.krayadev.domain.aggregates.projectAggregate.entities.kanbanBoard.KanbanBoard;
 import de.krayadev.domain.aggregates.taskAggregate.valueObjects.Complexity;
 import de.krayadev.domain.aggregates.taskAggregate.valueObjects.Priority;
-import de.krayadev.domain.aggregates.taskAggregate.valueObjects.TaskLifeTime;
+import de.krayadev.domain.aggregates.taskAggregate.valueObjects.TaskLifecycle;
 import lombok.NonNull;
 import org.apache.commons.lang3.builder.Builder;
 import de.krayadev.domain.aggregates.projectAggregate.entities.project.Project;
@@ -24,7 +24,7 @@ public class CreateTask {
 
     private Priority priority;
 
-    private TaskLifeTime lifeTime;
+    private TaskLifecycle lifeTime;
 
     private TaskStatus status;
 
@@ -41,7 +41,7 @@ public class CreateTask {
     public CreateTask(String name) {
         this.name = name;
         this.description = "";
-        this.lifeTime = new TaskLifeTime();
+        this.lifeTime = new TaskLifecycle();
         this.status = TaskStatus.TODO;
         this.complexity = Complexity.NONE;
         this.priority = Priority.NONE;

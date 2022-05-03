@@ -3,7 +3,7 @@ package de.krayadev.domain.aggregates.taskAggregate.entities.task;
 import de.krayadev.domain.aggregates.userAggregate.entities.user.User;
 import de.krayadev.domain.aggregates.taskAggregate.valueObjects.Complexity;
 import de.krayadev.domain.aggregates.taskAggregate.valueObjects.Priority;
-import de.krayadev.domain.aggregates.taskAggregate.valueObjects.TaskLifeTime;
+import de.krayadev.domain.aggregates.taskAggregate.valueObjects.TaskLifecycle;
 import lombok.*;
 import de.krayadev.domain.aggregates.projectAggregate.entities.kanbanBoard.KanbanBoard;
 import de.krayadev.domain.aggregates.userAggregate.entities.tag.Tag;
@@ -45,14 +45,11 @@ public class Task {
 
     @Embedded
     @AttributeOverrides({
+            @AttributeOverride(name = "status", column = @Column(nullable = false)),
             @AttributeOverride(name = "createdOn", column = @Column(name = "created_on", length = 6)),
             @AttributeOverride(name = "completedOn", column = @Column(name = "completed_on", length = 6))
     })
-    private TaskLifeTime lifeTime;
-
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private TaskStatus status = TaskStatus.TODO;
+    private TaskLifecycle lifecycle;
 
     @ManyToOne(targetEntity = Project.class)
     @JoinColumn(name = "project", referencedColumnName = "name", nullable = false, updatable = false)
@@ -86,16 +83,20 @@ public class Task {
         return !this.isInBacklog();
     }
 
+    public TaskStatus getStatus() {
+        return this.lifecycle.getStatus();
+    }
+
     public boolean isResponsible(User user){
         return this.responsibleUser == user;
     }
 
     public Duration getProcessingDuration() {
-        return this.lifeTime.getProcessingDuration();
+        return this.lifecycle.getProcessingDuration();
     }
 
     public boolean completed() {
-        return this.lifeTime.isCompleted();
+        return this.lifecycle.isCompleted();
     }
 
     private boolean isAssignedTo(KanbanBoard kanbanBoard){
@@ -121,13 +122,7 @@ public class Task {
     }
 
     public void changeStatus(@NonNull TaskStatus newStatus) {
-        if(this.status == newStatus)
-            throw new IllegalArgumentException("Task status cannot be changed to the same status");
-
-        if (this.status == TaskStatus.DONE)
-            this.lifeTime.reopen();
-
-        this.status = newStatus;
+        this.lifecycle.change(newStatus);
     }
 
     public void moveToBacklog() {
@@ -149,7 +144,7 @@ public class Task {
     }
 
     public boolean hasStatus(@NonNull TaskStatus status){
-        return this.status == status;
+        return this.lifecycle.inStatus(status);
     }
 
 }

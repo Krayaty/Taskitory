@@ -8,22 +8,28 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Embeddable
 @Getter
 @ToString
 public final class Sprint {
 
     @NonNull
-    private Timestamp startOfSprint = Timestamp.valueOf(LocalDateTime.now());
+    private final Timestamp startOfSprint;
 
     @NonNull
-    private Timestamp endOfSprint;
+    private final Timestamp endOfSprint;
 
+    protected Sprint() {
+        this.startOfSprint = Timestamp.valueOf(LocalDateTime.now());
+        this.endOfSprint = Timestamp.valueOf(LocalDateTime.now().plusWeeks(2));
+    }
     public Sprint(Timestamp endOfSprint) {
+        this.startOfSprint = Timestamp.valueOf(LocalDateTime.now());
+
         if (endOfSprint == null) {
             int fiveMinutes = 1000 * 60 * 5;
             this.endOfSprint = new Timestamp(startOfSprint.getTime() + fiveMinutes);
+            return;
         }
 
         if (endOfSprint.before(startOfSprint) || endOfSprint.equals(startOfSprint))
@@ -48,13 +54,12 @@ public final class Sprint {
     }
 
     public Sprint(@NonNull Duration duration) {
+        this.startOfSprint = Timestamp.valueOf(LocalDateTime.now());
+
         if (duration.compareTo(Duration.ofSeconds(30)) > 0)
             throw new IllegalArgumentException("Duration must be at least 30 seconds");
 
-        this.endOfSprint = new Timestamp(startOfSprint.getTime() + duration.toMillis());
-
-
-        this.endOfSprint = endOfSprint;
+        this.endOfSprint = new Timestamp(this.startOfSprint.getTime() + duration.toMillis());
     }
 
     public Sprint(@NonNull Timestamp startOfSprint, @NonNull Duration duration) {
