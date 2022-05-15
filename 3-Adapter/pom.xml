@@ -11,13 +11,13 @@
 
     <artifactId>Adapter</artifactId>
     <name>Adapter Layer</name>
-    <version>${adapter-version}</version>
 
     <dependencies>
         <dependency>
             <groupId>de.krayadev</groupId>
             <artifactId>Application</artifactId>
-            <version>${application-version}</version>
+            <version>${app_version}</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

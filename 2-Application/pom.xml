@@ -11,13 +11,13 @@
 
     <artifactId>Application</artifactId>
     <name>Application Layer</name>
-    <version>${application-version}</version>
 
     <dependencies>
         <dependency>
             <groupId>de.krayadev</groupId>
             <artifactId>Domain</artifactId>
-            <version>${domain-version}</version>
+            <version>${app_version}</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
