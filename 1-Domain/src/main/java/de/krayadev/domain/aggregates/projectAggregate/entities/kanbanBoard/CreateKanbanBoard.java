@@ -12,7 +12,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-public class CreateKanbanBoard  {
+public final class CreateKanbanBoard  {
 
     private Name name;
 
@@ -40,7 +40,7 @@ public class CreateKanbanBoard  {
         return new CreateKanbanBoard(name);
     }
 
-    public CreatableKanbanBoard forProjectAndSprint(@NonNull Project project, @NonNull Sprint sprint) {
+    public Builder<KanbanBoard> forProjectAndSprint(@NonNull Project project, @NonNull Sprint sprint) {
         this.project = project;
         this.sprint = sprint;
         return new CreatableKanbanBoard();
@@ -59,6 +59,11 @@ public class CreateKanbanBoard  {
 
         public CreatableKanbanBoard withDescription(@NonNull String description) {
             CreateKanbanBoard.this.description = new Description(description);
+            return this;
+        }
+
+        public CreatableKanbanBoard withDescription(@NonNull Description description) {
+            CreateKanbanBoard.this.description = description;
             return this;
         }
 

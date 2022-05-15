@@ -16,7 +16,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-public class CreateTask {
+public final class CreateTask {
 
     private Name name;
 
@@ -40,7 +40,7 @@ public class CreateTask {
 
     private Set<Tag> assignedTags;
 
-    public CreateTask(String name) {
+    private CreateTask(String name) {
         this.name = new Name(name);
         this.description = new Description();
         this.lifecycle = new TaskLifecycle();
@@ -55,7 +55,7 @@ public class CreateTask {
         return new CreateTask(name);
     }
 
-    public CreatableTask forProjectWithCreator(Project project, User creator) {
+    public Builder<Task> forProjectWithCreator(Project project, User creator) {
         this.project = project;
         this.creator = creator;
         return new CreatableTask();
