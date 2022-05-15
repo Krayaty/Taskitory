@@ -40,7 +40,7 @@ public final class CreateKanbanBoard  {
         return new CreateKanbanBoard(name);
     }
 
-    public Builder<KanbanBoard> forProjectAndSprint(@NonNull Project project, @NonNull Sprint sprint) {
+    public CreatableKanbanBoard forProjectAndSprint(@NonNull Project project, @NonNull Sprint sprint) {
         this.project = project;
         this.sprint = sprint;
         return new CreatableKanbanBoard();
@@ -50,7 +50,7 @@ public final class CreateKanbanBoard  {
         return new KanbanBoard(name, description, sprint, showReviewColumn, showTestingColumn, project, assignedTasks);
     }
 
-    class CreatableKanbanBoard implements Builder<KanbanBoard> {
+    public class CreatableKanbanBoard implements Builder<KanbanBoard> {
 
         @Override
         public KanbanBoard build() {

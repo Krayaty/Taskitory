@@ -16,7 +16,7 @@ import java.util.Objects;
 @Embeddable
 @Getter
 @ToString
-public final class TaskLifecycle {
+public class TaskLifecycle {
 
     @Enumerated(EnumType.STRING)
     private TaskStatus status = TaskStatus.TODO;
@@ -29,14 +29,6 @@ public final class TaskLifecycle {
         this.completedOn = null;
     }
 
-    public TaskLifecycle(Timestamp completedOn) {
-        if (completedOn.before(createdOn) || completedOn.equals(createdOn))
-            throw new IllegalArgumentException("Task cannot be completed before or as it was created");
-
-        this.completedOn = completedOn;
-        this.status = TaskStatus.DONE;
-    }
-
     private void complete() {
         this.completedOn = Timestamp.valueOf(LocalDateTime.now());
         this.status = TaskStatus.DONE;
@@ -44,6 +36,7 @@ public final class TaskLifecycle {
 
     private void reopen() {
         this.completedOn = null;
+        this.status = TaskStatus.TODO;
     }
 
     public boolean inStatus(TaskStatus status) {

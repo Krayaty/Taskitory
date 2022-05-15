@@ -55,7 +55,7 @@ public final class CreateTask {
         return new CreateTask(name);
     }
 
-    public Builder<Task> forProjectWithCreator(Project project, User creator) {
+    public CreatableTask forProjectWithCreator(Project project, User creator) {
         this.project = project;
         this.creator = creator;
         return new CreatableTask();
@@ -65,7 +65,7 @@ public final class CreateTask {
         return new Task(name, description, complexity, priority, lifecycle, project, responsibleUser, creator, kanbanBoard, assignedTags);
     }
 
-    class CreatableTask implements Builder<Task> {
+    public class CreatableTask implements Builder<Task> {
 
         @Override
         public Task build() {

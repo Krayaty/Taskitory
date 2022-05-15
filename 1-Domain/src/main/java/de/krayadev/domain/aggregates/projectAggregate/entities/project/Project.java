@@ -9,11 +9,10 @@ import de.krayadev.domain.aggregates.projectAggregate.entities.message.MessageFa
 import de.krayadev.domain.aggregates.projectAggregate.entities.message.MessageType;
 import de.krayadev.domain.aggregates.projectAggregate.entities.projectMembership.ProjectMembership;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import de.krayadev.domain.aggregates.projectAggregate.valueObjects.ProjectSecurityKey;
+import de.krayadev.domain.aggregates.projectAggregate.valueObjects.ProjectSecurityKey.ProjectSecurityKey;
 import de.krayadev.domain.aggregates.projectAggregate.entities.task.TaskStatus;
 import de.krayadev.domain.aggregates.userAggregate.entities.user.User;
 import de.krayadev.domain.valueObjects.Description;
-import de.krayadev.domain.valueObjects.Name;
 import lombok.*;
 import org.json.JSONObject;
 

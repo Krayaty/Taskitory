@@ -69,27 +69,24 @@ public class KanbanBoard {
     }
 
     public boolean isUsable(){
-        return this.sprint.isOver();
+        return !this.sprint.isOver();
     }
 
     private boolean isMovable(@NonNull Task task) {
         return isTargetable(task.getStatus());
     }
 
-    private boolean isTargetable(@NonNull TaskStatus status) {
+    public boolean isTargetable(@NonNull TaskStatus status) {
         if(status == TaskStatus.REVIEW && !this.showReviewColumn)
             return false;
 
         if(status == TaskStatus.TESTING && !this.showTestingColumn)
             return false;
 
-        return false;
+        return true;
     }
 
     public KanbanBoard migrate(@NonNull Sprint newSprint) {
-        if(this.isUsable())
-            throw new IllegalArgumentException("Kanban board is still usable and can therefore not be migrated. Consider extending the sprint instead");
-
         return new KanbanBoard(this.name, this.description, newSprint, this.showReviewColumn, this.showTestingColumn, this.project, this.assignedTasks);
     }
 
@@ -105,14 +102,9 @@ public class KanbanBoard {
         this.sprint = new Sprint(this.sprint.getStartOfSprint(), endOfSprint);
     }
 
-    public void extendSprint(@NonNull int seconds) {
-        long remaining_duration = Duration.between(this.sprint.getEndOfSprint().toInstant(), Timestamp.valueOf(LocalDateTime.now()).toInstant()).toSeconds();
-        this.sprint = new Sprint(this.sprint.getStartOfSprint(), Duration.ofSeconds(remaining_duration + seconds));
-    }
-
     public void extendSprint(@NonNull Duration duration) {
-        long remaining_duration = Duration.between(this.sprint.getEndOfSprint().toInstant(), Timestamp.valueOf(LocalDateTime.now()).toInstant()).toSeconds();
-        this.sprint = new Sprint(this.sprint.getStartOfSprint(), Duration.ofSeconds(remaining_duration + duration.getSeconds()));
+        Timestamp newEndOfSprint = Timestamp.valueOf(this.sprint.getEndOfSprint().toLocalDateTime().plus(duration));
+        this.sprint = new Sprint(this.sprint.getStartOfSprint(), newEndOfSprint);
     }
 
     public void showReviewColumn(){
@@ -179,6 +171,10 @@ public class KanbanBoard {
         return this.assignedTasks.stream().filter(Task::isCompleted).toList();
     }
 
+    public List<Task> getAssignedTasks() {
+        return this.assignedTasks.stream().toList();
+    }
+
     public void move(@NonNull Task task, @NonNull TaskStatus newState) {
         if(!this.isUsable())
             throw new IllegalArgumentException("Kanban board is not usable because the sprint is over");
@@ -197,7 +193,7 @@ public class KanbanBoard {
 
     public void remove(@NonNull Task task) {
         if(!this.isUsable())
-            throw new IllegalStateException("Kanban board is editable after the sprint is over");
+            throw new IllegalStateException("Kanban Board isn't editable after the sprint is over");
 
         if(!this.contains(task))
             throw new IllegalArgumentException("Task is not assigned to this kanban board");

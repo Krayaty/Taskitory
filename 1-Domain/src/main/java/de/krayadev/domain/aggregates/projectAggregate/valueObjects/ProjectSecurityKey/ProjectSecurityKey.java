@@ -1,4 +1,4 @@
-package de.krayadev.domain.aggregates.projectAggregate.valueObjects;
+package de.krayadev.domain.aggregates.projectAggregate.valueObjects.ProjectSecurityKey;
 
 import lombok.NonNull;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -11,10 +11,10 @@ import java.util.Base64;
 import java.util.Objects;
 
 @Embeddable
-public final class ProjectSecurityKey {
+public final class ProjectSecurityKey{
 
     @NonNull
-    private final String value;
+    protected final String value;
 
     public ProjectSecurityKey() {
         int length = 128;
@@ -31,7 +31,7 @@ public final class ProjectSecurityKey {
         }
     }
     
-    private String hashedKey() throws NoSuchAlgorithmException {
+    protected String hashedKey() throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] hash = digest.digest(this.value.getBytes(StandardCharsets.UTF_8));
         String hashString = Base64.getEncoder().encodeToString(hash);

@@ -9,7 +9,7 @@ import java.util.Objects;
 
 @Embeddable
 @Getter
-public final class Complexity {
+public final class Complexity{
 
     public static final Complexity NONE = new Complexity();
 
@@ -43,4 +43,5 @@ public final class Complexity {
     public String toString() {
         return String.valueOf(this.value);
     }
+
 }
