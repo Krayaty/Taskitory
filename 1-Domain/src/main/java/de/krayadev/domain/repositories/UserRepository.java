@@ -8,6 +8,6 @@ public interface UserRepository {
 
     public User getUserById(String id);
 
-    public User merge(User user);
+    public User save(User user);
 
 }

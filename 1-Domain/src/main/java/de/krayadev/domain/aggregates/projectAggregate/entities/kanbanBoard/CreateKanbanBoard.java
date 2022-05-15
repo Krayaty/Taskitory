@@ -47,7 +47,7 @@ public final class CreateKanbanBoard  {
     }
 
     private KanbanBoard build() {
-        return new KanbanBoard(name, description, sprint, showReviewColumn, showTestingColumn, project, assignedTasks);
+        return new KanbanBoard(name.getValue(), description.getValue(), sprint, showReviewColumn, showTestingColumn, project, assignedTasks);
     }
 
     public class CreatableKanbanBoard implements Builder<KanbanBoard> {

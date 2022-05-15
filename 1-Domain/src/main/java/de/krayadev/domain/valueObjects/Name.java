@@ -5,11 +5,12 @@ import lombok.NonNull;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
 @Getter
-public class Name {
+public class Name implements Serializable {
 
     private final String value;
 

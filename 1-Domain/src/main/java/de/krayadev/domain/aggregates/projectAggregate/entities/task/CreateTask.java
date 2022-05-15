@@ -62,7 +62,7 @@ public final class CreateTask {
     }
 
     private Task build() {
-        return new Task(name, description, complexity, priority, lifecycle, project, responsibleUser, creator, kanbanBoard, assignedTags);
+        return new Task(name.getValue(), description.getValue(), complexity, priority, lifecycle, project, responsibleUser, creator, kanbanBoard, assignedTags);
     }
 
     public class CreatableTask implements Builder<Task> {

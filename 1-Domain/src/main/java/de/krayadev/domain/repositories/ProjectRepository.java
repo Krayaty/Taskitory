@@ -4,7 +4,7 @@ import de.krayadev.domain.aggregates.projectAggregate.entities.project.Project;
 
 public interface ProjectRepository {
 
-    Project findById(String name);
+    Project findByName(String name);
 
     Project save(Project project);
 

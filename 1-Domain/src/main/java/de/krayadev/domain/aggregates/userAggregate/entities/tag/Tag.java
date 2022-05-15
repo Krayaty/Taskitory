@@ -25,11 +25,8 @@ public class Tag {
     @NonNull
     private String name;
 
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name = "value", column = @Column(length = 500))
-    })
-    private Description description;
+    @Column(length = 500)
+    private String description;
 
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "creator", referencedColumnName = "id", nullable = false, updatable = false)
@@ -48,12 +45,12 @@ public class Tag {
     protected Tag() {
         Name name = new Name();
         this.name = name.getValue();
-        this.description = new Description();
+        this.description = new Description().getValue();
         this.creator = null;
     }
 
-    public void changeDescription(String newDescription) {
-        this.description = new Description(newDescription);
+    public void changeDescription(Description newDescription) {
+        this.description = newDescription.getValue();
     }
 
     public void assignTo(@NonNull Task task) {

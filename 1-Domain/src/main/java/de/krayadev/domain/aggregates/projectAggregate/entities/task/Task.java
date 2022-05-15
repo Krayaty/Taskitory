@@ -33,17 +33,10 @@ public class Task {
     private final UUID id = UUID.randomUUID();
 
     @Column(length = 100, nullable = false)
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name = "value", column = @Column(length = 100, nullable = false))
-    })
-    private Name name;
+    private String name;
 
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name = "value", column = @Column(length = 500))
-    })
-    private Description description;
+    @Column(length = 500)
+    private String description;
 
     @Embedded
     @AttributeOverrides({ @AttributeOverride(name = "value", column = @Column(name = "complexity", length = 2)) })
@@ -113,12 +106,12 @@ public class Task {
         return this.lifecycle.isCompleted();
     }
 
-    public void changeName(@NonNull String newName) {
-        this.name = new Name(newName);
+    public void changeName(@NonNull Name newName) {
+        this.name = newName.getValue();
     }
 
-    public void changeDescription(String newDescription) {
-        this.description = new Description(newDescription);
+    public void changeDescription(Description newDescription) {
+        this.description = newDescription.getValue();
     }
 
     public void changeComplexity(@NonNull int complexity) {

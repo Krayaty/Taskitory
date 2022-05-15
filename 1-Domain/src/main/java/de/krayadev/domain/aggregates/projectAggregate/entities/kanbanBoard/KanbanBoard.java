@@ -12,7 +12,6 @@ import de.krayadev.domain.aggregates.projectAggregate.entities.project.Project;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.*;
 
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
@@ -31,17 +30,11 @@ public class KanbanBoard {
     @Id
     private final UUID id = UUID.randomUUID();
 
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name = "value", column = @Column(length = 100, nullable = false))
-    })
-    private Name name;
+    @Column(length = 100, nullable = false)
+    private String name;
 
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name = "value", column = @Column(length = 500))
-    })
-    private Description description;
+    @Column(length = 500)
+    private String description;
 
     @Embedded
     @AttributeOverrides({
@@ -90,12 +83,12 @@ public class KanbanBoard {
         return new KanbanBoard(this.name, this.description, newSprint, this.showReviewColumn, this.showTestingColumn, this.project, this.assignedTasks);
     }
 
-    public void rename(@NonNull String newName) {
-        this.name = new Name(newName);
+    public void rename(@NonNull Name newName) {
+        this.name = newName.getValue();
     }
 
-    public void changeDescription(String newDescription) {
-        this.description = new Description(newDescription);
+    public void changeDescription(Description newDescription) {
+        this.description = newDescription.getValue();
     }
 
     public void setEndOfSprint(Timestamp endOfSprint) {

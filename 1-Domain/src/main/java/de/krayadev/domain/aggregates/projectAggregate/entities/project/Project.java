@@ -13,6 +13,7 @@ import de.krayadev.domain.aggregates.projectAggregate.valueObjects.ProjectSecuri
 import de.krayadev.domain.aggregates.projectAggregate.entities.task.TaskStatus;
 import de.krayadev.domain.aggregates.userAggregate.entities.user.User;
 import de.krayadev.domain.valueObjects.Description;
+import de.krayadev.domain.valueObjects.Name;
 import lombok.*;
 import org.json.JSONObject;
 
@@ -34,12 +35,8 @@ public class Project {
     @Column(length = 100, nullable = false, updatable = false)
     private String name;
 
-
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name = "value", column = @Column(length = 500))
-    })
-    private Description description;
+    @Column(length = 500)
+    private String description;
 
     @Embedded
     @AttributeOverrides({ @AttributeOverride(name = "value", column = @Column(name = "key", length = 128, columnDefinition = "bpchar(128)", unique = true, updatable = false, nullable = false)) })
@@ -61,14 +58,14 @@ public class Project {
     @JsonIgnore
     private Set<Message> sentMessages;
 
-    public Project(@NonNull String name) {
-        this.name = name;
-        this.description = new Description();
+    public Project(@NonNull Name name) {
+        this.name = name.getValue();
+        this.description = new Description().getValue();
     }
 
-    public Project(@NonNull String name, String description) {
-        this.name = name;
-        this.description = new Description(description);
+    public Project(@NonNull Name name, Description description) {
+        this.name = name.getValue();
+        this.description = description.getValue();
     }
 
     private ProjectMembership getMembershipOf(@NonNull User user){
@@ -108,8 +105,8 @@ public class Project {
         this.sentMessages.add(message);
     }
 
-    public void changeDescription(String newDescription) {
-        this.description = new Description(newDescription);
+    public void changeDescription(Description newDescription) {
+        this.description = newDescription.getValue();
     }
 
     public void changeSecurityKey(){
