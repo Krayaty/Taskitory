@@ -12,8 +12,8 @@ public class Description {
 
     private final String value;
 
-    public Description(@NonNull String value) {
-        if(value.isEmpty() || value.isBlank()){
+    public Description(String value) {
+        if(value == null || value.isEmpty() || value.isBlank()){
             this.value = "";
             return;
         }

@@ -15,8 +15,10 @@ public class Name implements Serializable {
     private final String value;
 
     public Name(@NonNull String value) {
-        if(value.isEmpty() || value.isBlank())
-            throw new IllegalArgumentException("Name cannot be empty");
+        if(value == null || value.isEmpty() || value.isBlank()) {
+            this.value = RandomStringUtils.random(50, true, false);
+            return;
+        }
 
         if(value.length() > 100)
             throw new IllegalArgumentException("Name cannot be longer than 100 characters");

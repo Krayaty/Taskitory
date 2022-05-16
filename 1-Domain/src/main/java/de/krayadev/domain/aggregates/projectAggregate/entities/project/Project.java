@@ -21,6 +21,7 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -58,14 +59,16 @@ public class Project {
     @JsonIgnore
     private Set<Message> sentMessages;
 
-    public Project(@NonNull Name name) {
+    public Project(@NonNull Name name, @NonNull User creator) {
         this.name = name.getValue();
         this.description = new Description().getValue();
+        this.add(creator);
     }
 
-    public Project(@NonNull Name name, Description description) {
+    public Project(@NonNull Name name, Description description, @NonNull User creator) {
         this.name = name.getValue();
         this.description = description.getValue();
+        this.add(creator);
     }
 
     private ProjectMembership getMembershipOf(@NonNull User user){
@@ -136,6 +139,12 @@ public class Project {
         return this.kanbanBoards.stream().filter(kb -> !kb.isUsable()).collect(Collectors.toList());
     }
 
+    public KanbanBoard getKanbanBoardById(@NonNull UUID KanbanBoardId){
+        return this.kanbanBoards.stream().filter(kb -> kb.getId().equals(KanbanBoardId)).findFirst().orElseThrow(
+                () -> new IllegalArgumentException("Kanban Board with given id doesn't exist")
+        );
+    }
+
     public void putTaskOnKanbanBoard(@NonNull Task task, @NonNull KanbanBoard kanbanBoard){
         if(!this.possesses(task))
             throw new IllegalArgumentException("Task should be possessed by this project");
@@ -191,6 +200,12 @@ public class Project {
         return kanbanBoard.getAssignedTasksPerStatus();
     }
 
+    public Task getTaskById(@NonNull UUID taskId){
+        return this.tasks.stream().filter(task -> task.getId().equals(taskId)).findFirst().orElseThrow(
+                () -> new IllegalArgumentException("Task with given id doesn't exist")
+        );
+    }
+
     public void delete(@NonNull Task task){
         if(!this.possesses(task))
             throw new IllegalArgumentException("The given task isn't possessed by this project");
@@ -224,6 +239,16 @@ public class Project {
                 .forEach(user -> this.send(MessageFactory.createNewProjectMemberMessage(this, user, membership)));
     }
 
+    private void add(@NonNull User creator){
+        if(this.isTeamMember(creator))
+            throw new IllegalArgumentException("User is already a member of this project");
+
+        ProjectMembership membership = new ProjectMembership(this, creator, ProjectRole.ADMIN);
+        this.memberships.add(membership);
+
+        this.send(MessageFactory.createNewProjectMemberMessage(this, creator, membership));
+    }
+
     public Map<User, ProjectRole> getTeamMembersWithRoles(){
         return this.memberships.stream().collect(Collectors.toMap(ProjectMembership::getUser, ProjectMembership::getRole));
     }
@@ -250,6 +275,9 @@ public class Project {
     public void kick(@NonNull User teamMember){
         if(!this.isTeamMember(teamMember))
             throw new IllegalArgumentException("User is not a member of this project");
+
+        if(this.isAdmin(teamMember))
+            throw new IllegalArgumentException("User is an admin and therefore can not be kicked");
 
         this.remove(teamMember);
         this.send(MessageFactory.createKickedFromProjectMessage(this, teamMember));

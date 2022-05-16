@@ -17,7 +17,7 @@ public class MessageFactory {
         contentAsJSON.put(MessageContentJSONKey.ROLE.getValue(), role.name);
 
         MessageContent content = new MessageContent(contentAsJSON);
-        return new Message(content, MessageType.INVITATION, origin, recipient);
+        return new Invitation(content, origin, recipient);
     }
 
     public static Message createProjectMemberRoleChangeMessage(User recipient, ProjectMembership membership, ProjectRole newRole) {
@@ -29,7 +29,7 @@ public class MessageFactory {
         contentAsJSON.put(MessageContentJSONKey.NEW_ROLE.getValue(), newRole);
 
         MessageContent content = new MessageContent(contentAsJSON);
-        return new Message(content, MessageType.ROLE_CHANGE, membership.getProject(), recipient);
+        return new RoleChangeMessage(content, membership.getProject(), recipient);
     }
 
     public static Message createProjectDeletedMessage(Project origin, User recipient) {
@@ -38,7 +38,7 @@ public class MessageFactory {
         contentAsJSON.put(MessageContentJSONKey.PROJECT_NAME.getValue(), origin.getName());
 
         MessageContent content = new MessageContent(contentAsJSON);
-        return new Message(content, MessageType.PROJECT_DELETION, origin, recipient);
+        return new ProjectDeletedMessage(content, origin, recipient);
     }
 
     public static Message createKickedFromProjectMessage(Project origin, User recipient) {
@@ -47,7 +47,7 @@ public class MessageFactory {
         contentAsJSON.put(MessageContentJSONKey.PROJECT_NAME.getValue(), origin.getName());
 
         MessageContent content = new MessageContent(contentAsJSON);
-        return new Message(content, MessageType.KICKED_FROM_PROJECT, origin, recipient);
+        return new KickedFromProjectMessage(content, origin, recipient);
     }
 
     public static Message createNewProjectMemberMessage(Project origin, User recipient, ProjectMembership membership) {
@@ -58,7 +58,7 @@ public class MessageFactory {
         contentAsJSON.put(MessageContentJSONKey.ROLE.getValue(), membership.getRole().name);
 
         MessageContent content = new MessageContent(contentAsJSON);
-        return new Message(content, MessageType.NEW_TEAM_MEMBER, origin, recipient);
+        return new NewTeamMemberMessage(content, origin, recipient);
     }
 
 }

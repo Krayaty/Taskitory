@@ -8,6 +8,7 @@ import org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticatio
 import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurerAdapter;
 import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
 import org.keycloak.representations.AccessToken;
+import org.keycloak.representations.IDToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +21,7 @@ import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.session.NullAuthenticatedSessionStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -63,4 +65,19 @@ public class KeycloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter
         return session.getToken();
     }
 
+    public static String getAccessTokenString(HttpServletRequest request) {
+        KeycloakAuthenticationToken token = (KeycloakAuthenticationToken) request.getUserPrincipal();
+        KeycloakPrincipal principal=(KeycloakPrincipal)token.getPrincipal();
+        KeycloakSecurityContext session = principal.getKeycloakSecurityContext();
+        System.out.println(session.getTokenString());
+        System.out.println(session.getToken().getName());
+        System.out.println(session.getToken().getAccessTokenHash());
+        return session.getTokenString();
+    }
+
+    public static String getUserId(HttpServletRequest request) {
+        KeycloakAuthenticationToken token = (KeycloakAuthenticationToken) request.getUserPrincipal();
+        KeycloakPrincipal principal=(KeycloakPrincipal)token.getPrincipal();
+        return principal.getName();
+    }
 }

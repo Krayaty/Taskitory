@@ -6,21 +6,221 @@
 	},
 	"item": [
 		{
-			"name": "test",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{backend_server}}/test",
-					"host": [
-						"{{backend_server}}"
-					],
-					"path": [
-						"test"
-					]
+			"name": "User",
+			"item": [
+				{
+					"name": "GetUserInfo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backend_server}}/user/",
+							"host": [
+								"{{backend_server}}"
+							],
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"User1\",\n    \"password\": \"abcdefghijklmnop\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend_server}}/user/",
+							"host": [
+								"{{backend_server}}"
+							],
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUserName",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"NewUsername\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend_server}}/user/",
+							"host": [
+								"{{backend_server}}"
+							],
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatePw",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"newPassword\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend_server}}/user/",
+							"host": [
+								"{{backend_server}}"
+							],
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{backend_server}}/user/",
+							"host": [
+								"{{backend_server}}"
+							],
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "GetProjects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backend_server}}/project/",
+							"host": [
+								"{{backend_server}}"
+							],
+							"path": [
+								"project",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProject",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backend_server}}/project/project1",
+							"host": [
+								"{{backend_server}}"
+							],
+							"path": [
+								"project",
+								"project1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateProject",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{backend_server}}/project/",
+							"host": [
+								"{{backend_server}}"
+							],
+							"path": [
+								"project",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateName",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{backend_server}}/project/",
+							"host": [
+								"{{backend_server}}"
+							],
+							"path": [
+								"project",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteProject",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{backend_server}}/project/",
+							"host": [
+								"{{backend_server}}"
+							],
+							"path": [
+								"project",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {

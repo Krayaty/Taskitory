@@ -32,11 +32,11 @@ public class Sprint {
             return;
         }
 
-        if (endOfSprint.before(startOfSprint) || endOfSprint.equals(startOfSprint))
+        if (isValidEndOfSprint(startOfSprint, endOfSprint))
             throw new IllegalArgumentException("End of sprint must be after start of sprint");
 
         Duration duration = Duration.between(startOfSprint.toLocalDateTime(), endOfSprint.toLocalDateTime());
-        if (duration.compareTo(Duration.ofMinutes(5)) < 0)
+        if (isValidSprintDuration(duration))
             throw new IllegalArgumentException("Duration must be at least 30 seconds");
 
         this.endOfSprint = endOfSprint;
@@ -50,11 +50,11 @@ public class Sprint {
             this.endOfSprint = new Timestamp(startOfSprint.getTime() + twoWeeks);
 
         } else {
-            if (endOfSprint.before(startOfSprint) || endOfSprint.equals(startOfSprint))
+            if (isValidEndOfSprint(startOfSprint, endOfSprint))
                 throw new IllegalArgumentException("End of sprint must be after start of sprint");
 
             Duration duration = Duration.between(startOfSprint.toLocalDateTime(), endOfSprint.toLocalDateTime());
-            if (duration.compareTo(Duration.ofMinutes(5)) < 0)
+            if (isValidSprintDuration(duration))
                 throw new IllegalArgumentException("Duration must be at least 30 seconds");
 
             this.endOfSprint = endOfSprint;
@@ -64,7 +64,7 @@ public class Sprint {
     public Sprint(@NonNull Duration duration) {
         this.startOfSprint = Timestamp.valueOf(LocalDateTime.now());
 
-        if (duration.compareTo(Duration.ofMinutes(5)) < 0)
+        if (isValidSprintDuration(duration))
             throw new IllegalArgumentException("Duration must be at least 30 seconds");
 
         this.endOfSprint = new Timestamp(this.startOfSprint.getTime() + duration.toMillis());
@@ -73,7 +73,7 @@ public class Sprint {
     public Sprint(@NonNull Timestamp startOfSprint, @NonNull Duration duration) {
         this.startOfSprint = startOfSprint;
 
-        if (duration.compareTo(Duration.ofMinutes(5)) < 0)
+        if (isValidSprintDuration(duration))
             throw new IllegalArgumentException("Duration must be at least 30 seconds");
 
         this.endOfSprint = new Timestamp(startOfSprint.getTime() + duration.toMillis());
@@ -98,5 +98,13 @@ public class Sprint {
 
     public Duration getDuration() {
         return Duration.between(this.startOfSprint.toLocalDateTime(), this.endOfSprint.toLocalDateTime());
+    }
+
+    private static boolean isValidSprintDuration(@NonNull Duration duration) {
+        return duration.compareTo(Duration.ofMinutes(5)) < 0;
+    }
+
+    private static boolean isValidEndOfSprint(@NonNull Timestamp startOfSprint, @NonNull Timestamp endOfSprint) {
+        return endOfSprint.before(startOfSprint) || endOfSprint.equals(startOfSprint);
     }
 }

@@ -18,7 +18,7 @@ import java.util.UUID;
 @Getter
 @Entity
 @Table(name = "message", schema = "backend")
-public class Message {
+public abstract class Message {
 
     @Id
     private final UUID id = UUID.randomUUID();
